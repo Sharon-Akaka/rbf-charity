@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Hero } from "@/components/hero";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ interface SessionData {
   };
 }
 
-export default function DonateSuccessPage() {
+function DonateSuccessContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
   const [loading, setLoading] = useState(true);
@@ -254,5 +254,38 @@ export default function DonateSuccessPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function DonateSuccessPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen flex-col">
+          <Hero
+            title="Processing..."
+            description="Verifying your donation"
+            imageUrl="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&h=1080&fit=crop"
+            imageAlt="Processing"
+          />
+          <section className="py-16 sm:py-20">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-2xl">
+                <Card className="animate-fade-in-up">
+                  <CardContent className="pt-12 pb-8 text-center">
+                    <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-4" />
+                    <p className="text-lg text-muted-foreground">
+                      Loading...
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
+        </div>
+      }
+    >
+      <DonateSuccessContent />
+    </Suspense>
   );
 }

@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Hero } from "@/components/hero";
 import { DonationForm } from "@/components/donation-form";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Shield, CheckCircle, XCircle } from "lucide-react";
 
-export default function DonatePage() {
+function CanceledMessage() {
   const searchParams = useSearchParams();
   const canceled = searchParams.get("canceled");
   const [showCanceled, setShowCanceled] = useState(false);
@@ -23,6 +23,44 @@ export default function DonatePage() {
     }
   }, [canceled]);
 
+  if (!showCanceled) return null;
+
+  return (
+    <div className="mb-6 mx-auto max-w-2xl">
+      <Card className="border-yellow-200 bg-yellow-50 animate-fade-in-up">
+        <CardContent className="pt-6">
+          <div className="flex items-start gap-4">
+            <div className="shrink-0">
+              <XCircle className="h-6 w-6 text-yellow-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-yellow-900 mb-1">
+                Payment Canceled
+              </h3>
+              <p className="text-sm text-yellow-800">
+                Your payment was canceled. No charges were made. If you
+                encountered any issues, please try again or{" "}
+                <a href="/contact" className="underline font-medium">
+                  contact us
+                </a>{" "}
+                for assistance.
+              </p>
+            </div>
+            <button
+              onClick={() => setShowCanceled(false)}
+              className="shrink-0 text-yellow-600 hover:text-yellow-800"
+              aria-label="Dismiss"
+            >
+              <XCircle className="h-5 w-5" />
+            </button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+export default function DonatePage() {
   return (
     <div className="flex min-h-screen flex-col">
       <Hero
@@ -34,39 +72,9 @@ export default function DonatePage() {
 
       <section className="py-16 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {showCanceled && (
-            <div className="mb-6 mx-auto max-w-2xl">
-              <Card className="border-yellow-200 bg-yellow-50 animate-fade-in-up">
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-4">
-                    <div className="shrink-0">
-                      <XCircle className="h-6 w-6 text-yellow-600" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-yellow-900 mb-1">
-                        Payment Canceled
-                      </h3>
-                      <p className="text-sm text-yellow-800">
-                        Your payment was canceled. No charges were made. If you
-                        encountered any issues, please try again or{" "}
-                        <a href="/contact" className="underline font-medium">
-                          contact us
-                        </a>{" "}
-                        for assistance.
-                      </p>
-                    </div>
-                    <button
-                      onClick={() => setShowCanceled(false)}
-                      className="shrink-0 text-yellow-600 hover:text-yellow-800"
-                      aria-label="Dismiss"
-                    >
-                      <XCircle className="h-5 w-5" />
-                    </button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          )}
+          <Suspense fallback={null}>
+            <CanceledMessage />
+          </Suspense>
           <DonationForm />
 
           {/* Why Donate Section */}
