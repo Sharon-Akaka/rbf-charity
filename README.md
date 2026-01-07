@@ -15,6 +15,7 @@ Full-stack MVP built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, and
 - ✅ Professional email templates (Resend)
 - ✅ Dialog and AlertDialog components (shadcn/ui)
 - ✅ Smooth animations and transitions
+- ✅ Stripe donation system (ready for setup)
 
 ### Pages
 
@@ -24,6 +25,7 @@ Full-stack MVP built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, and
 - **Events** - Community events listing (responsive grid, MongoDB-backed)
 - **How to Join** - Membership information and signup process
 - **Contact** - Contact form with backend + email notifications
+- **Donate** - Stripe donation page with checkout
 - **Sign In** - Admin authentication (`/sign-in`)
 - **Admin/Events** - Protected admin dashboard (`/admin/events`)
 
@@ -64,10 +66,10 @@ EMAIL_FROM=RBF Charity <onboarding@resend.dev>  # Use your domain in production
 EMAIL_TO=contact@rbf-charity.org
 EMAIL_REPLY_TO=contact@rbf-charity.org
 
-# Stripe (Optional - for future donations)
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
-STRIPE_SECRET_KEY=
-STRIPE_WEBHOOK_SECRET=
+# Stripe (REQUIRED for donations - see STRIPE_SETUP.md)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_key_here
+STRIPE_SECRET_KEY=sk_test_your_key_here
+NEXT_PUBLIC_BASE_URL=http://localhost:3000  # Change to your domain in production
 ```
 
 ## 🔑 Admin Access
@@ -111,6 +113,7 @@ STRIPE_WEBHOOK_SECRET=
 - ✅ Mobile responsive design tested and verified
 - ✅ Contact form tested and working
 - ✅ Admin dashboard tested and working
+- ✅ Stripe donation system implemented
 
 ## 🎯 Next Steps (Priority Order)
 
@@ -160,13 +163,19 @@ STRIPE_WEBHOOK_SECRET=
 - [ ] Optimize images for web
 - [ ] Add proper alt text for accessibility
 
-### 5. **Stripe Donations** (Future Enhancement)
+### 5. **Stripe Donations** ✅ COMPLETE (Setup Required)
 
-**Time**: 2-3 hours
+**Status**: Code implemented, needs Stripe account setup  
+**Time**: ~15 minutes to configure
 
-- [ ] Set up Stripe account
-- [ ] Implement donation functionality
-- [ ] Add donation CTAs throughout site
+- ✅ Donation page created (`/donate`)
+- ✅ Stripe Checkout integration
+- ✅ Donation form with suggested amounts
+- ✅ Custom amount option
+- ✅ Donation purpose selection
+- ✅ Success page
+- ✅ Donation CTAs added across site
+- ⏳ **Next**: Set up Stripe account and add API keys (see `STRIPE_SETUP.md`)
 
 ### 6. **SEO & Analytics** (Post-Launch)
 
@@ -208,6 +217,7 @@ rbf-charity/
 │   └── models/           # Mongoose models
 ├── components/
 │   ├── ui/               # shadcn/ui components
+│   ├── donation-form.tsx # Stripe donation form
 │   └── ...               # Other components
 └── lib/                  # Utility functions
 ```
@@ -223,6 +233,22 @@ rbf-charity/
 ### Recommended Platform
 
 - **Vercel** (recommended for Next.js)
+
+### Vercel Deployment Steps
+
+1. **Push your code to GitHub/GitLab/Bitbucket**
+
+2. **Import your project to Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Click "Add New Project"
+   - Import your repository
+
+3. **Configure Environment Variables**
+   - Go to your project settings in Vercel: **Settings → Environment Variables**
+   - Add all environment variables from your `.env.local` file
+
+4. **Deploy**
+   - Vercel will automatically deploy on push
 
 ### Deployment Checklist
 

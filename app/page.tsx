@@ -21,14 +21,14 @@ export default function Home() {
         imageAlt="Community support and unity"
       >
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button href="/join" size="lg">
+          <Button href="/donate" size="lg">
+            Donate Now
+          </Button>
+          <Button href="/join" variant="outline" size="lg">
             How to Join
           </Button>
-          <Button href="/contact" variant="outline" size="lg">
+          <Button href="/contact" variant="secondary" size="lg">
             Contact Us
-          </Button>
-          <Button href="/support" variant="secondary" size="lg">
-            Support Us
           </Button>
         </div>
       </Hero>
@@ -165,19 +165,19 @@ export default function Home() {
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button
-                href="/join"
+                href="/donate"
                 size="lg"
                 className="transition-transform duration-200 hover:scale-105"
               >
-                Join RBF
+                Donate Now
               </Button>
               <Button
-                href="/support"
+                href="/join"
                 variant="outline"
                 size="lg"
                 className="transition-transform duration-200 hover:scale-105"
               >
-                Learn More
+                Join RBF
               </Button>
               <Button
                 href="/contact"

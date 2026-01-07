@@ -11,8 +11,8 @@ export function Footer() {
               RBF
             </h3>
             <p className="text-sm text-muted-foreground">
-              The Regentonians Benevolent Fund - Supporting alumni of Sierra Leone Grammar School 
-              through care, unity, and brotherhood.
+              The Regentonians Benevolent Fund - Supporting alumni of Sierra
+              Leone Grammar School through care, unity, and brotherhood.
             </p>
           </div>
 
@@ -21,17 +21,26 @@ export function Footer() {
             <h4 className="mb-4 font-semibold text-foreground">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/about" className="text-muted-foreground hover:text-primary">
+                <Link
+                  href="/about"
+                  className="text-muted-foreground hover:text-primary"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/support" className="text-muted-foreground hover:text-primary">
+                <Link
+                  href="/support"
+                  className="text-muted-foreground hover:text-primary"
+                >
                   Support We Provide
                 </Link>
               </li>
               <li>
-                <Link href="/join" className="text-muted-foreground hover:text-primary">
+                <Link
+                  href="/join"
+                  className="text-muted-foreground hover:text-primary"
+                >
                   How to Join
                 </Link>
               </li>
@@ -43,13 +52,27 @@ export function Footer() {
             <h4 className="mb-4 font-semibold text-foreground">Resources</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/events" className="text-muted-foreground hover:text-primary">
+                <Link
+                  href="/events"
+                  className="text-muted-foreground hover:text-primary"
+                >
                   Events
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-primary">
+                <Link
+                  href="/contact"
+                  className="text-muted-foreground hover:text-primary"
+                >
                   Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/donate"
+                  className="text-muted-foreground hover:text-primary font-medium"
+                >
+                  Donate
                 </Link>
               </li>
             </ul>
@@ -60,7 +83,10 @@ export function Footer() {
             <h4 className="mb-4 font-semibold text-foreground">Contact</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="mailto:contact@rbf-charity.org" className="hover:text-primary">
+                <a
+                  href="mailto:contact@rbf-charity.org"
+                  className="hover:text-primary"
+                >
                   contact@rbf-charity.org
                 </a>
               </li>
@@ -70,11 +96,11 @@ export function Footer() {
 
         <div className="mt-12 border-t border-border pt-8">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} The Regentonians Benevolent Fund. All rights reserved.
+            © {new Date().getFullYear()} The Regentonians Benevolent Fund. All
+            rights reserved.
           </p>
         </div>
       </div>
     </footer>
   );
 }
-

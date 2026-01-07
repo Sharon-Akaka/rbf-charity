@@ -13,6 +13,7 @@
     "@radix-ui/react-dialog": "^1.1.15",
     "@react-email/components": "^1.0.3",
     "@react-email/render": "^2.0.1",
+    "@stripe/stripe-js": "^8.6.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
@@ -22,6 +23,7 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "resend": "^6.6.0",
+    "stripe": "^20.1.1",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
