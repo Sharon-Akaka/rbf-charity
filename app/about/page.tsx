@@ -70,7 +70,7 @@ export default function AboutPage() {
       <Hero
         title="About Us"
         description={`Welcome to the Regentonians Benevolent Fund, learn about our mission, values, and how we operate`}
-        imageUrl="/heroThree.JPG"
+        imageUrl="/purplefootballteam.jpeg"
         imageAlt="About the charity mission"
         imagePosition="center"
       >
@@ -90,7 +90,7 @@ export default function AboutPage() {
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
             <div className="relative h-64 w-full overflow-hidden rounded-lg sm:h-80 lg:h-96 animate-fade-in-up">
               <Image
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
+                src="/ourMission.jpeg"
                 alt="Community mission and purpose"
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"
@@ -143,7 +143,7 @@ export default function AboutPage() {
             </div>
             <div className="relative h-64 w-full overflow-hidden rounded-lg sm:h-80 lg:h-96 animate-fade-in-up animation-delay-200">
               <Image
-                src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop"
+                src="/heroOne.JPG"
                 alt="Alumni community support"
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"

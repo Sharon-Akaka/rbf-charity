@@ -28,7 +28,7 @@ export default function SupportPage() {
           <div className="mx-auto max-w-5xl space-y-12">
             {/* Bereavement Support */}
             <Card className="border-2 overflow-hidden animate-fade-in-up transition-all duration-300 hover:shadow-lg">
-              <div className="relative h-64 w-full">
+              <div className="relative h-80 w-full">
                 <Image
                   src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=600&fit=crop"
                   alt="Bereavement support and compassion"
@@ -79,9 +79,9 @@ export default function SupportPage() {
 
             {/* Get Well Soon Support */}
             <Card className="border-2 overflow-hidden animate-fade-in-up animation-delay-200 transition-all duration-300 hover:shadow-lg">
-              <div className="relative h-64 w-full">
+              <div className="relative h-80 w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&h=600&fit=crop"
+                  src="/getWellSoon.jpeg"
                   alt="Health and recovery support"
                   fill
                   className="object-cover transition-transform duration-300 hover:scale-105"
@@ -129,10 +129,10 @@ export default function SupportPage() {
 
             {/* Milestone Birthdays */}
             <Card className="border-2 overflow-hidden animate-fade-in-up animation-delay-400 transition-all duration-300 hover:shadow-lg">
-              <div className="relative h-64 w-full">
+              <div className="relative h-80 w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=600&fit=crop"
-                  alt="Community celebration and milestones"
+                  src="/birthdayMilestone.jpeg"
+                  alt="Birthday milestone celebration"
                   fill
                   className="object-cover transition-transform duration-300 hover:scale-105"
                 />

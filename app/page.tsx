@@ -39,13 +39,13 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
             <div className="relative h-64 w-full overflow-hidden rounded-lg sm:h-80 lg:h-96 animate-fade-in-up">
-        <Image
+              <Image
                 src="/whatwedo.jpeg"
                 alt="Community support and unity"
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"
-          priority
-        />
+                priority
+              />
             </div>
             <div className="animate-fade-in-up animation-delay-200">
               <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -74,25 +74,26 @@ export default function Home() {
               Our support is delivered through three core pillars
             </p>
           </div>
-          <div className="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <Card className="overflow-hidden animate-fade-in-up animation-delay-200 transition-all duration-300 hover:shadow-lg">
-              <div className="relative h-48 w-full">
+          <div className="mx-auto mt-16 grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <Card className="group overflow-hidden animate-fade-in-up animation-delay-200 flex flex-col transition-all duration-300 hover:shadow-xl">
+              <div className="relative aspect-3/4 w-full min-h-[280px] sm:min-h-[320px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=400&fit=crop"
+                  src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=500&h=700&fit=crop"
                   alt="Bereavement support and compassion"
                   fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                  <Heart className="h-6 w-6 text-primary" />
+              <CardHeader className="flex-1 flex flex-col">
+                <div className="mb-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                  <Heart className="h-5 w-5 text-primary" />
                 </div>
-                <CardTitle>Bereavement Support</CardTitle>
+                <CardTitle className="text-xl">Bereavement Support</CardTitle>
                 <CardDescription>"Cry Berrin"</CardDescription>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
+              <CardContent className="pt-0">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   Providing compassionate support and financial assistance to
                   families during times of loss, helping them navigate difficult
                   periods with dignity and care.
@@ -100,24 +101,25 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden animate-fade-in-up animation-delay-400 transition-all duration-300 hover:shadow-lg">
-              <div className="relative h-48 w-full">
+            <Card className="group overflow-hidden animate-fade-in-up animation-delay-400 flex flex-col transition-all duration-300 hover:shadow-xl">
+              <div className="relative aspect-3/4 w-full min-h-[280px] sm:min-h-[320px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop"
+                  src="/getWellSoon.jpeg"
                   alt="Health and recovery support"
                   fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                  <HandHeart className="h-6 w-6 text-primary" />
+              <CardHeader className="flex-1 flex flex-col">
+                <div className="mb-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                  <HandHeart className="h-5 w-5 text-primary" />
                 </div>
-                <CardTitle>Get Well Soon Support</CardTitle>
+                <CardTitle className="text-xl">Get Well Soon Support</CardTitle>
                 <CardDescription>Health & Recovery</CardDescription>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
+              <CardContent className="pt-0">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   Offering support and encouragement to members during illness
                   or recovery, ensuring they know they are not alone in their
                   journey back to health.
@@ -125,26 +127,27 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden animate-fade-in-up animation-delay-600 transition-all duration-300 hover:shadow-lg">
-              <div className="relative h-48 w-full">
-            <Image
-                  src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=400&fit=crop"
+            <Card className="group overflow-hidden animate-fade-in-up animation-delay-600 flex flex-col transition-all duration-300 hover:shadow-xl">
+              <div className="relative aspect-3/4 w-full min-h-[280px] sm:min-h-[320px]">
+                <Image
+                  src="/birthdayMilestone.jpeg"
                   alt="Community celebration"
                   fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                  <Users className="h-6 w-6 text-primary" />
+              <CardHeader className="flex-1 flex flex-col">
+                <div className="mb-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                  <Users className="h-5 w-5 text-primary" />
                 </div>
-                <CardTitle>Milestone Birthdays</CardTitle>
+                <CardTitle className="text-xl">Milestone Birthdays</CardTitle>
                 <CardDescription>Celebrating Together</CardDescription>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
+              <CardContent className="pt-0">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   Recognising and celebrating significant milestone birthdays,
-                  honoring our members and strengthening the bonds of our
+                  honouring our members and strengthening the bonds of our
                   community.
                 </p>
               </CardContent>

@@ -30,7 +30,7 @@ function getEvents(): Event[] {
       date: new Date(2026, 10, 27).toISOString(), // November 27, 2025
       time: "6:00 PM",
       location: "London, UK",
-      imageUrl: "https://images.unsplash.com/photo-1606914469633-bd39206ea739?w=800&h=600&fit=crop",
+      imageUrl: "/thanksgiving.jpg",
     },
     {
       _id: "2",
@@ -39,7 +39,7 @@ function getEvents(): Event[] {
       date: new Date(2025, 8, 15).toISOString(), // September 15, 2025
       time: "7:00 PM",
       location: "London, UK",
-      imageUrl: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=600&fit=crop",
+      imageUrl: "/are.jpeg",
     },
     {
       _id: "3",
@@ -48,7 +48,7 @@ function getEvents(): Event[] {
       date: new Date(2025, 11, 20).toISOString(), // December 20, 2025
       time: "6:30 PM",
       location: "London, UK",
-      imageUrl: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop",
+      imageUrl: "/heroThree.JPG",
     },
     {
       _id: "4",
@@ -57,7 +57,7 @@ function getEvents(): Event[] {
       date: new Date(2025, 6, 10).toISOString(), // July 10, 2025
       time: "2:00 PM",
       location: "London, UK",
-      imageUrl: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop",
+      imageUrl: "/atTheBar.jpg",
     },
     {
       _id: "5",
@@ -66,7 +66,7 @@ function getEvents(): Event[] {
       date: new Date(2025, 7, 15).toISOString(), // August 15, 2025
       time: "12:00 PM",
       location: "London, UK",
-      imageUrl: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=600&fit=crop",
+      imageUrl: "/heroFour.JPG",
     },
     {
       _id: "6",
@@ -75,7 +75,7 @@ function getEvents(): Event[] {
       date: new Date(2025, 9, 5).toISOString(), // October 5, 2025
       time: "7:30 PM",
       location: "London, UK",
-      imageUrl: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&h=600&fit=crop",
+      imageUrl: "/atTheBar.jpg",
     },
     {
       _id: "7",
@@ -84,7 +84,7 @@ function getEvents(): Event[] {
       date: new Date(2025, 5, 20).toISOString(), // June 20, 2025
       time: "3:00 PM",
       location: "London, UK",
-      imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop",
+      imageUrl: "/are.jpeg",
     },
   ];
 

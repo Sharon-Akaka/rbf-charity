@@ -14,7 +14,7 @@ export function Footer() {
                 alt="RBF Logo"
                 width={60}
                 height={60}
-                className="w-8 h-8 object-contain"
+                className="w-12 h-12 object-contain"
                 priority
               />
             </Link>
