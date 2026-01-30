@@ -104,7 +104,7 @@ export default function Home() {
             <Card className="group overflow-hidden animate-fade-in-up animation-delay-400 flex flex-col transition-all duration-300 hover:shadow-xl">
               <div className="relative aspect-3/4 w-full min-h-[280px] sm:min-h-[320px]">
                 <Image
-                  src="/getWellSoon.jpeg"
+                  src="/getwellsoon.jpeg"
                   alt="Health and recovery support"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

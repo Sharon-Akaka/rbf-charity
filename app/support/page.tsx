@@ -81,7 +81,7 @@ export default function SupportPage() {
             <Card className="border-2 overflow-hidden animate-fade-in-up animation-delay-200 transition-all duration-300 hover:shadow-lg">
               <div className="relative h-80 w-full">
                 <Image
-                  src="/getWellSoon.jpeg"
+                  src="/getwellsoon.jpeg"
                   alt="Health and recovery support"
                   fill
                   className="object-cover transition-transform duration-300 hover:scale-105"
