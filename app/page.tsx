@@ -94,11 +94,39 @@ export default function Home() {
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <Link href="/support#milestone-birthdays" className="block h-full">
+              <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-600 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
+                <div className="relative aspect-square w-full overflow-hidden">
+                  <Image
+                    src="/birthdayCard-SA.png"
+                    alt="Community celebration"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <CardHeader className="flex-1">
+                  <div className="mb-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                    <Users className="h-5 w-5 text-primary" />
+                  </div>
+                  <CardTitle className="text-xl">Milestone Birthdays</CardTitle>
+                  <CardDescription className="mt-2">Celebrating Together</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Recognising and celebrating significant milestone birthdays,
+                    honouring our members and strengthening the bonds of our
+                    community.
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+            
             <Link href="/support#bereavement-support" className="block h-full">
               <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-200 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
-                <div className="relative h-48 w-full overflow-hidden">
+                <div className="relative aspect-square w-full overflow-hidden">
                   <Image
-                    src="/bereavementsupport.jpeg"
+                    src="/lossCard-SA.png"
                     alt="Bereavement support and compassion"
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -124,9 +152,9 @@ export default function Home() {
 
             <Link href="/support#get-well-soon-support" className="block h-full">
               <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-400 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
-                <div className="relative h-48 w-full overflow-hidden">
+                <div className="relative aspect-square w-full overflow-hidden">
                   <Image
-                    src="/newgetwellsoon.jpeg"
+                    src="/wellSoonCard-SA.png"
                     alt="Health and recovery support"
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -150,37 +178,9 @@ export default function Home() {
               </Card>
             </Link>
 
-            <Link href="/support#milestone-birthdays" className="block h-full">
-              <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-600 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
-                <div className="relative h-48 w-full overflow-hidden">
-                  <Image
-                    src="/birthdayMilestone.jpeg"
-                    alt="Community celebration"
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <CardHeader className="flex-1">
-                  <div className="mb-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                    <Users className="h-5 w-5 text-primary" />
-                  </div>
-                  <CardTitle className="text-xl">Milestone Birthdays</CardTitle>
-                  <CardDescription className="mt-2">Celebrating Together</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Recognising and celebrating significant milestone birthdays,
-                    honouring our members and strengthening the bonds of our
-                    community.
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
-
             <Link href="/support#mentoring-scheme" className="block h-full">
               <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-600 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
-                <div className="relative h-48 w-full overflow-hidden">
+                <div className="relative aspect-square w-full overflow-hidden">
                   <Image
                     src="/mentoringMission.png"
                     alt="Mentoring and mission support"
