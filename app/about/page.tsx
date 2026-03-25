@@ -27,15 +27,15 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: "2",
-    name: "Reverend Winston Sylvah",
+    name: "Rev. Winston Sylvah",
     role: "Clergy",
     imageUrl: "/winstonSylvah.JPG",
   },
   {
     id: "3",
-    name: "Reverend Maurice Browne",
+    name: "Rev. Maurice Browne",
     role: "Clergy",
-    imageUrl: "",
+    imageUrl: "/mauriceBrown.jpeg",
   },
   {
     id: "4",
@@ -105,7 +105,7 @@ export default function AboutPage() {
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
             <div className="relative h-64 w-full overflow-hidden rounded-lg sm:h-80 lg:h-96 animate-fade-in-up">
               <Image
-                src="/ourMission.png"
+                src="/ourMissionNew.jpeg"
                 alt="Community mission and purpose"
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"
