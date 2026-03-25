@@ -149,121 +149,114 @@ export default function SupportPage() {
                   </div>
                 </CardContent>
               </Card>
+            </div>
 
-              {/* Milestone Birthdays */}
-              <div id="milestone-birthdays" className="scroll-mt-24">
-                <Card className="border-2 overflow-hidden animate-fade-in-up animation-delay-400 transition-all duration-300 hover:shadow-lg">
-                  <div
-                    className="relative w-full"
-                    style={{ aspectRatio: "6/1" }}
-                  >
-                    <Image
-                      src="/birthdayBanner-SA.png"
-                      alt="Birthday milestone celebration"
-                      fill
-                      className="object-cover transition-transform duration-300 hover:scale-105"
-                    />
+            {/* Milestone Birthdays */}
+            <div id="milestone-birthdays" className="scroll-mt-24">
+              <Card className="border-2 overflow-hidden animate-fade-in-up animation-delay-400 transition-all duration-300 hover:shadow-lg">
+                <div className="relative w-full" style={{ aspectRatio: "6/1" }}>
+                  <Image
+                    src="/birthdayBanner-SA.png"
+                    alt="Birthday milestone celebration"
+                    fill
+                    className="object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <CardHeader>
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10">
+                    <Cake className="h-8 w-8 text-primary" />
                   </div>
-                  <CardHeader>
-                    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10">
-                      <Cake className="h-8 w-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-3xl">
-                      Milestone Birthdays
-                    </CardTitle>
-                    <CardDescription className="text-lg">
-                      Celebrating Together
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-lg leading-8 text-muted-foreground">
-                      Life's milestones deserve to be celebrated, and the RBF
-                      community takes great joy in recognising significant
-                      birthdays of our members. These celebrations strengthen
-                      our bonds and honour the contributions each member has
-                      made to our community.
+                  <CardTitle className="text-3xl">
+                    Milestone Birthdays
+                  </CardTitle>
+                  <CardDescription className="text-lg">
+                    Celebrating Together
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-lg leading-8 text-muted-foreground">
+                    Life's milestones deserve to be celebrated, and the RBF
+                    community takes great joy in recognising significant
+                    birthdays of our members. These celebrations strengthen our
+                    bonds and honour the contributions each member has made to
+                    our community.
+                  </p>
+                  <p className="text-lg leading-8 text-muted-foreground">
+                    Whether it's a 50th, 60th, 70th, or another significant
+                    milestone, we come together to celebrate, share memories,
+                    and express our appreciation for the member's presence in
+                    our community.
+                  </p>
+                  <div className="pt-4">
+                    <p className="font-medium text-foreground">
+                      Recognition includes:
                     </p>
-                    <p className="text-lg leading-8 text-muted-foreground">
-                      Whether it's a 50th, 60th, 70th, or another significant
-                      milestone, we come together to celebrate, share memories,
-                      and express our appreciation for the member's presence in
-                      our community.
-                    </p>
-                    <div className="pt-4">
-                      <p className="font-medium text-foreground">
-                        Recognition includes:
-                      </p>
-                      <ul className="mt-2 list-disc space-y-2 pl-6 text-muted-foreground">
-                        <li>
-                          Special recognition and tributes from the community
-                        </li>
-                        <li>Celebratory gatherings and events</li>
-                        <li>Commemorative gifts and messages</li>
-                        <li>Documentation of the celebration for the member</li>
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+                    <ul className="mt-2 list-disc space-y-2 pl-6 text-muted-foreground">
+                      <li>
+                        Special recognition and tributes from the community
+                      </li>
+                      <li>Celebratory gatherings and events</li>
+                      <li>Commemorative gifts and messages</li>
+                      <li>Documentation of the celebration for the member</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
 
-              {/* Mission: Mentoring Scheme */}
-              <div id="mentoring-scheme" className="scroll-mt-24">
-                <Card className="border-2 overflow-hidden animate-fade-in-up animation-delay-600 transition-all duration-300 hover:shadow-lg">
-                  <div
-                    className="relative w-full"
-                    style={{ aspectRatio: "6/1" }}
-                  >
-                    <Image
-                      src="/mentoringBanner-SA1.png"
-                      alt="Mentoring and mission support"
-                      fill
-                      className="object-cover transition-transform duration-300 hover:scale-105"
-                    />
+            {/* Mission: Mentoring Scheme */}
+            <div id="mentoring-scheme" className="scroll-mt-24">
+              <Card className="border-2 overflow-hidden animate-fade-in-up animation-delay-600 transition-all duration-300 hover:shadow-lg">
+                <div className="relative w-full" style={{ aspectRatio: "6/1" }}>
+                  <Image
+                    src="/mentoringBanner-SA1.png"
+                    alt="Mentoring and mission support"
+                    fill
+                    className="object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <CardHeader>
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10">
+                    <GraduationCap className="h-8 w-8 text-primary" />
                   </div>
-                  <CardHeader>
-                    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10">
-                      <GraduationCap className="h-8 w-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-3xl">
-                      Mission: Mentoring Scheme
-                    </CardTitle>
-                    <CardDescription className="text-lg">
-                      Personal & Professional Growth
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-lg leading-8 text-muted-foreground">
-                      As part of the Benevolent Policy, we are keen to address
-                      our members&apos; needs more closely by introducing a
-                      mentoring scheme designed to support both personal and
-                      professional development. This initiative aims to foster a
-                      supportive community where members can benefit from the
-                      knowledge and experience of their peers.
+                  <CardTitle className="text-3xl">
+                    Mission: Mentoring Scheme
+                  </CardTitle>
+                  <CardDescription className="text-lg">
+                    Personal & Professional Growth
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-lg leading-8 text-muted-foreground">
+                    As part of the Benevolent Policy, we are keen to address our
+                    members&apos; needs more closely by introducing a mentoring
+                    scheme designed to support both personal and professional
+                    development. This initiative aims to foster a supportive
+                    community where members can benefit from the knowledge and
+                    experience of their peers.
+                  </p>
+                  <p className="text-lg leading-8 text-muted-foreground">
+                    The scheme connects members who are seeking guidance with
+                    those who can offer it, whether in career development,
+                    personal growth, or other areas. By sharing experience and
+                    expertise within our community, we strengthen the bonds of
+                    brotherhood and help each other thrive.
+                  </p>
+                  <div className="pt-4">
+                    <p className="font-medium text-foreground">
+                      The scheme includes:
                     </p>
-                    <p className="text-lg leading-8 text-muted-foreground">
-                      The scheme connects members who are seeking guidance with
-                      those who can offer it, whether in career development,
-                      personal growth, or other areas. By sharing experience and
-                      expertise within our community, we strengthen the bonds of
-                      brotherhood and help each other thrive.
-                    </p>
-                    <div className="pt-4">
-                      <p className="font-medium text-foreground">
-                        The scheme includes:
-                      </p>
-                      <ul className="mt-2 list-disc space-y-2 pl-6 text-muted-foreground">
-                        <li>One-to-one mentoring partnerships</li>
-                        <li>Support for career and professional development</li>
-                        <li>Personal development guidance and goal-setting</li>
-                        <li>
-                          Regular check-ins and a structured yet flexible
-                          approach
-                        </li>
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+                    <ul className="mt-2 list-disc space-y-2 pl-6 text-muted-foreground">
+                      <li>One-to-one mentoring partnerships</li>
+                      <li>Support for career and professional development</li>
+                      <li>Personal development guidance and goal-setting</li>
+                      <li>
+                        Regular check-ins and a structured yet flexible approach
+                      </li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
