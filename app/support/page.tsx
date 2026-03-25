@@ -141,7 +141,8 @@ export default function SupportPage() {
                   </div>
                 </CardContent>
               </Card>
-              </div>
+            
+            {/* Milestone Birthdays */}
             <div id="milestone-birthdays" className="scroll-mt-24">
               <Card className="border-2 overflow-hidden animate-fade-in-up animation-delay-400 transition-all duration-300 hover:shadow-lg">
                 <div className="relative w-full" style={{ aspectRatio: '6/1' }}>
