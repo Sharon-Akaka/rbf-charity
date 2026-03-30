@@ -9,7 +9,7 @@ import {
 import { Hero } from "@/components/hero";
 import { Heart, Users, Shield, Handshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DisclaimerIcon } from "@/components/disclaimer-dialog";
+import { DisclaimerLink } from "@/components/disclaimer-dialog";
 
 interface TeamMember {
   id: string;
@@ -23,43 +23,43 @@ const teamMembers: TeamMember[] = [
     id: "1",
     name: "George Johnson",
     role: "Chaplain",
-    imageUrl: "/georgeJohnson.JPG",
+    imageUrl: "/team-members/georgeJohnson.JPG",
   },
   {
     id: "2",
     name: "Rev. Winston Sylvah",
     role: "Clergy",
-    imageUrl: "/winstonSylvah.JPG",
+    imageUrl: "/team-members/winstonSylvah.JPG",
   },
   {
     id: "3",
     name: "Rev. Maurice Browne",
     role: "Clergy",
-    imageUrl: "/mauriceBrown.jpeg",
+    imageUrl: "/team-members/mauriceBrown.jpeg",
   },
   {
     id: "4",
     name: "Vidal Williams",
     role: "Treasurer",
-    imageUrl: "/vidalWillaims.jpeg",
+    imageUrl: "/team-members/vidalWilliams.jpeg",
   },
   {
     id: "5",
     name: "Paul Parker",
     role: "Administrator",
-    imageUrl: "/paulParker.jpeg",
+    imageUrl: "/team-members/paulParker.jpeg",
   },
   {
     id: "6",
     name: "Dennis John",
     role: "Adviser",
-    imageUrl: "/dennisJohn.jpeg",
+    imageUrl: "/team-members/dennisJohn.jpeg",
   },
   {
     id: "7",
     name: "Ekow Fraser",
     role: "Adviser",
-    imageUrl: "/ekowFraser.JPG",
+    imageUrl: "/team-members/ekowFraser.JPG",
   },
   {
     id: "8",
@@ -71,7 +71,7 @@ const teamMembers: TeamMember[] = [
     id: "9",
     name: "Frank Wellington",
     role: "Adviser",
-    imageUrl: "/frankWellignton.jpeg",
+    imageUrl: "/team-members/frankWellington.jpeg",
   },
 ];
 
@@ -86,16 +86,16 @@ export default function AboutPage() {
         // imageAlt="About the fund mission"
         // imagePosition="center"
       >
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <span className="inline-flex items-center gap-2">
-            <DisclaimerIcon />
-            <Button href="/contribute" size="lg">
+        <div className="mx-auto flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
+          <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
+            <Button href="/contribute" size="lg" className="w-full sm:w-auto sm:min-w-52">
               Contribute Now
             </Button>
-          </span>
-          <Button href="/join" variant="outline" size="lg">
-            How to Join
-          </Button>
+            <Button href="/join" variant="outline" size="lg" className="w-full sm:w-auto sm:min-w-52">
+              How to Join
+            </Button>
+          </div>
+          <DisclaimerLink />
         </div>
       </Hero>
 
@@ -105,7 +105,7 @@ export default function AboutPage() {
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
             <div className="relative h-64 w-full overflow-hidden rounded-lg sm:h-80 lg:h-96 animate-fade-in-up">
               <Image
-                src="/ourMissionNew.jpeg"
+                src="/ourMission.jpeg"
                 alt="Community mission and purpose"
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"
@@ -116,17 +116,17 @@ export default function AboutPage() {
                 Our Mission
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                The Regentonians' Benevolent Fund (RBF) exists to provide
+                The Regentonians&apos; Benevolent Fund (RBF) exists to provide
                 compassionate welfare support to alumni of Sierra Leone Grammar
                 School during times of need. We believe in the power of
                 community, unity, and brotherhood to uplift and support one
-                another through life's challenges and celebrations.
+                another through life&apos;s challenges and celebrations.
               </p>
               <p className="mt-4 text-lg leading-8 text-muted-foreground">
                 Our purpose is to ensure that no Regentonian faces difficult
                 times alone, whether through bereavement, illness, or other life
                 challenges. We are committed to maintaining a transparent,
-                member-funded organization that operates with integrity and
+                member-funded organisation that operates with integrity and
                 care.
               </p>
             </div>
@@ -143,7 +143,7 @@ export default function AboutPage() {
                 Who We Support
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                The Regentonians' Benevolent Fund supports contributing Alumni
+                The Regentonians&apos; Benevolent Fund supports contributing Alumni
                 of Sierra Leone Grammar School. Our members are former students
                 who share a common bond through their educational experience and
                 continue to support one another throughout their lives.
@@ -284,7 +284,7 @@ export default function AboutPage() {
               Our People
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Meet the dedicated individuals who make the Regentonians'
+              Meet the dedicated individuals who make the Regentonians&apos;
               Benevolent Fund possible
             </p>
           </div>

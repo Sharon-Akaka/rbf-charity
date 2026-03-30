@@ -15,7 +15,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DisclaimerIcon } from "@/components/disclaimer-dialog";
+import { DisclaimerLink } from "@/components/disclaimer-dialog";
 
 export default function SupportPage() {
   return (
@@ -27,16 +27,16 @@ export default function SupportPage() {
         // imageUrl="/heroFour.JPG"
         // imageAlt="Support and assistance"
       >
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <span className="inline-flex items-center gap-2">
-            <DisclaimerIcon />
-            <Button href="/contribute" size="lg">
+        <div className="mx-auto flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
+          <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
+            <Button href="/contribute" size="lg" className="w-full sm:w-auto sm:min-w-52">
               Contribute Now
             </Button>
-          </span>
-          <Button href="/join" variant="outline" size="lg">
-            How to Join
-          </Button>
+            <Button href="/join" variant="outline" size="lg" className="w-full sm:w-auto sm:min-w-52">
+              How to Join
+            </Button>
+          </div>
+          <DisclaimerLink />
         </div>
       </Hero>
 
@@ -63,18 +63,18 @@ export default function SupportPage() {
                     Bereavement Support
                   </CardTitle>
                   <CardDescription className="text-lg">
-                    "Cry Berrin"
+                    &ldquo;Cry Berrin&rdquo;
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-lg leading-8 text-muted-foreground">
-                    Losing a loved one is one of life's most difficult
-                    experiences. The Regentonians' Benevolent Fund provides
+                    Losing a loved one is one of life&apos;s most difficult
+                    experiences. The Regentonians&apos; Benevolent Fund provides
                     compassionate support and financial assistance to families
                     during these challenging times.
                   </p>
                   <p className="text-lg leading-8 text-muted-foreground">
-                    Our "Cry Berrin" programme ensures that members and their
+                    Our &ldquo;Cry Berrin&rdquo; programme ensures that members and their
                     families receive the support they need to navigate
                     bereavement with dignity. We understand that grief affects
                     everyone differently, and we are here to help in whatever
@@ -104,7 +104,7 @@ export default function SupportPage() {
               <Card className="border-2 overflow-hidden animate-fade-in-up animation-delay-200 transition-all duration-300 hover:shadow-lg">
                 <div className="relative w-full" style={{ aspectRatio: "6/1" }}>
                   <Image
-                    src="/getWellSoonBanner-SA.png"
+                    src="/getWellSoonBanner.png"
                     alt="Health and recovery support"
                     fill
                     className="object-cover transition-transform duration-300 hover:scale-105"
@@ -131,8 +131,8 @@ export default function SupportPage() {
                   <p className="text-lg leading-8 text-muted-foreground">
                     We believe that knowing you have a community behind you can
                     make a significant difference in the healing process.
-                    Whether it's a short-term illness or a longer recovery
-                    journey, we're here to help.
+                    Whether it&apos;s a short-term illness or a longer recovery
+                    journey, we&apos;re here to help.
                   </p>
                   <div className="pt-4">
                     <p className="font-medium text-foreground">
@@ -175,16 +175,16 @@ export default function SupportPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-lg leading-8 text-muted-foreground">
-                    Life's milestones deserve to be celebrated, and the RBF
+                    Life&apos;s milestones deserve to be celebrated, and the RBF
                     community takes great joy in recognising significant
                     birthdays of our members. These celebrations strengthen our
                     bonds and honour the contributions each member has made to
                     our community.
                   </p>
                   <p className="text-lg leading-8 text-muted-foreground">
-                    Whether it's a 50th, 60th, 70th, or another significant
+                    Whether it&apos;s a 50th, 60th, 70th, or another significant
                     milestone, we come together to celebrate, share memories,
-                    and express our appreciation for the member's presence in
+                    and express our appreciation for the member&apos;s presence in
                     our community.
                   </p>
                   <div className="pt-4">
@@ -209,7 +209,7 @@ export default function SupportPage() {
               <Card className="border-2 overflow-hidden animate-fade-in-up animation-delay-600 transition-all duration-300 hover:shadow-lg">
                 <div className="relative w-full" style={{ aspectRatio: "6/1" }}>
                   <Image
-                    src="/mentoringBanner-SA1.png"
+                    src="/mentoringBanner.png"
                     alt="Mentoring and mission support"
                     fill
                     className="object-cover transition-transform duration-300 hover:scale-105"
@@ -270,26 +270,24 @@ export default function SupportPage() {
               Need Support?
             </h2>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              If you or a fellow Regentonian needs assistance, please don't
-              hesitate to reach out. We're here to help.
+              If you or a fellow Regentonian needs assistance, please don&apos;t
+              hesitate to reach out. We&apos;re here to help.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <span className="inline-flex items-center gap-2">
-                <DisclaimerIcon />
+            <div className="mx-auto mt-10 flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
+              <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
                 <Button
                   href="/contribute"
                   size="lg"
-                  className="transition-transform duration-200 hover:scale-105"
+                  className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
                 >
                   Contribute Now
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-              </span>
               <Button
                 href="/contact"
                 variant="outline"
                 size="lg"
-                className="transition-transform duration-200 hover:scale-105"
+                className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
               >
                 Contact Us
               </Button>
@@ -297,10 +295,12 @@ export default function SupportPage() {
                 href="/join"
                 variant="secondary"
                 size="lg"
-                className="transition-transform duration-200 hover:scale-105"
+                className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
               >
                 Join RBF
               </Button>
+              </div>
+              <DisclaimerLink />
             </div>
           </div>
         </div>
