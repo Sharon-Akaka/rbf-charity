@@ -121,7 +121,7 @@ export default function Home() {
                 </CardContent>
               </Card>
             </Link>
-            
+
             <Link href="/support#bereavement-support" className="block h-full">
               <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-200 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
                 <div className="relative aspect-square w-full overflow-hidden">
@@ -227,22 +227,22 @@ export default function Home() {
                 >
                   Contribute Now
                 </Button>
-              <Button
-                href="/join"
-                variant="outline"
-                size="lg"
-                className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
-              >
-                Join RBF
-              </Button>
-              <Button
-                href="/contact"
-                variant="secondary"
-                size="lg"
-                className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
-              >
-                Contact Us
-              </Button>
+                <Button
+                  href="/join"
+                  variant="outline"
+                  size="lg"
+                  className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
+                >
+                  Join RBF
+                </Button>
+                <Button
+                  href="/contact"
+                  variant="secondary"
+                  size="lg"
+                  className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
+                >
+                  Contact Us
+                </Button>
               </div>
               <DisclaimerLink />
             </div>
