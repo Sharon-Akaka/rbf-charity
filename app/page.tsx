@@ -61,6 +61,8 @@ export default function Home() {
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"
                 priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                unoptimized
               />
             </div>
             <div className="animate-fade-in-up animation-delay-200">
