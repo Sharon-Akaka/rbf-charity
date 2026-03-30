@@ -15,7 +15,7 @@ import { Heart, Loader2 } from "lucide-react";
 const suggestedAmounts = [25, 50, 100, 250, 500];
 
 export function DonationForm() {
-  const router = useRouter();
+  // const router = useRouter();
   const [amount, setAmount] = useState<number | "">("");
   const [customAmount, setCustomAmount] = useState("");
   const [purpose, setPurpose] = useState("");
@@ -71,9 +71,13 @@ export function DonationForm() {
       } else {
         throw new Error("No checkout URL received from server");
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Contribution error:", err);
-      setError(err.message || "An error occurred. Please try again.");
+      const message =
+        err instanceof Error
+          ? err.message
+          : "An error occurred. Please try again.";
+      setError(message);
       setLoading(false);
     }
   };
@@ -86,8 +90,8 @@ export function DonationForm() {
         </div>
         <CardTitle className="text-3xl">Make a Contribution</CardTitle>
         <CardDescription className="text-base mt-2">
-          Your contribution helps us provide compassionate welfare support to
-          alumni of Sierra Leone Grammar School during times of need.
+          Your one-off contribution helps us provide compassionate welfare
+          support to alumni of Sierra Leone Grammar School during times of need.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -101,10 +105,11 @@ export function DonationForm() {
                   key={suggested}
                   type="button"
                   onClick={() => handleAmountSelect(suggested)}
-                  className={`rounded-md border-2 px-4 py-3 text-sm font-medium transition-all duration-200 ${amount === suggested
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-input bg-background hover:border-primary/50 hover:bg-accent"
-                    }`}
+                  className={`rounded-md border-2 px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                    amount === suggested
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-input bg-background hover:border-primary/50 hover:bg-accent"
+                  }`}
                 >
                   £{suggested}
                 </button>
@@ -179,8 +184,8 @@ export function DonationForm() {
           </Button>
 
           <p className="text-xs text-center text-muted-foreground">
-            Secure payment powered by Stripe. Your contribution is processed safely
-            and securely.
+            Secure payment powered by Stripe. Your contribution is processed
+            safely and securely.
           </p>
         </form>
       </CardContent>

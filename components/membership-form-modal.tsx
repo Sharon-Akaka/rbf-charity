@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ClipboardList } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   Dialog,
   DialogContent,
@@ -10,18 +11,38 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-export function MembershipFormModal() {
+interface MembershipFormModalProps {
+  size?: "sm" | "default" | "lg";
+  animated?: boolean;
+  label?: string;
+  showIcon?: boolean;
+  className?: string;
+  variant?: "default" | "outline" | "secondary" | "ghost";
+}
+
+export function MembershipFormModal({
+  size = "lg",
+  animated = true,
+  label = "Apply for Membership",
+  showIcon = true,
+  className,
+  variant = "default",
+}: MembershipFormModalProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <Button
-        size="lg"
+        size={size}
+        variant={variant}
         onClick={() => setOpen(true)}
-        className="transition-transform duration-200 hover:scale-105"
+        className={cn(
+          animated ? "transition-transform duration-200 hover:scale-105" : "",
+          className,
+        )}
       >
-        <ClipboardList className="mr-2 h-5 w-5" />
-        Apply for Membership
+        {showIcon && <ClipboardList className="mr-2 h-5 w-5" />}
+        {label}
       </Button>
 
       <Dialog open={open} onOpenChange={setOpen}>

@@ -106,6 +106,23 @@ export function DisclaimerIcon({ className = "" }: { className?: string }) {
   );
 }
 
+export function DisclaimerLink({ className = "" }: { className?: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className={`inline-flex items-center gap-2 text-sm text-primary/80 transition-colors hover:text-primary ${className}`}
+      >
+        <Info className="h-4 w-4 shrink-0" />
+        <span>Contribution disclaimer</span>
+      </button>
+      <DisclaimerModal open={open} onOpenChange={setOpen} />
+    </>
+  );
+}
+
 /** Floating button fixed at the bottom-right of every page */
 export function DisclaimerFloatingButton() {
   const [open, setOpen] = useState(false);

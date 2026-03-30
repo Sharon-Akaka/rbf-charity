@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "RBF Fund",
     "Sierra Leone Grammar School",
     "alumni support",
-    "fund organization",
+    "fund organisation",
     "welfare support",
     "bereavement support",
     "community fund",
@@ -103,7 +103,7 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   category: "fund",
-  classification: "Fund Organization",
+  classification: "Fund Organisation",
   other: {
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "default",

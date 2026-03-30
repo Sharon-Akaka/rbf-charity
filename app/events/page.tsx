@@ -9,7 +9,7 @@ import {
 import { Hero } from "@/components/hero";
 import { Calendar, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DisclaimerIcon } from "@/components/disclaimer-dialog";
+import { DisclaimerLink } from "@/components/disclaimer-dialog";
 
 interface Event {
   _id: string;
@@ -102,20 +102,20 @@ export default function EventsPage() {
       <Hero
         title="Events"
         description="Stay connected with our community through events and gatherings"
-      // imageUrl="/heroTwo.JPG"
-      // imageAlt="Community events"
-      // imagePosition="top"
+        // imageUrl="/heroTwo.JPG"
+        // imageAlt="Community events"
+        // imagePosition="top"
       >
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button href="/join" variant="outline" size="lg">
-            How to Join
-          </Button>
-          <span className="inline-flex items-center gap-2">
-            <Button href="/contribute" size="lg">
+        <div className="mx-auto flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
+          <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
+            <Button href="/join" variant="outline" size="lg" className="w-full sm:w-auto sm:min-w-52">
+              How to Join
+            </Button>
+            <Button href="/contribute" size="lg" className="w-full sm:w-auto sm:min-w-52">
               Contribute Now
             </Button>
-            <DisclaimerIcon />
-          </span>
+          </div>
+          <DisclaimerLink />
         </div>
       </Hero>
 

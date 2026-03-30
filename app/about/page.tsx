@@ -9,7 +9,7 @@ import {
 import { Hero } from "@/components/hero";
 import { Heart, Users, Shield, Handshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DisclaimerIcon } from "@/components/disclaimer-dialog";
+import { DisclaimerLink } from "@/components/disclaimer-dialog";
 
 interface TeamMember {
   id: string;
@@ -21,51 +21,57 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     id: "1",
-    name: "Rev George Johnson",
-    role: "The Chaplain",
-    imageUrl: "/georgeJohnson.JPG",
+    name: "George Johnson",
+    role: "Chaplain",
+    imageUrl: "/team-members/georgeJohnson.JPG",
   },
   {
     id: "2",
-    name: "Winston Sylvah",
+    name: "Rev. Winston Sylvah",
     role: "Clergy",
-    imageUrl: "/winstonSylvah.JPG",
+    imageUrl: "/team-members/winstonSylvah.JPG",
   },
   {
     id: "3",
-    name: "Vidal Williams",
-    role: "Treasurer",
-    imageUrl: "/vidalWillaims.jpeg",
+    name: "Rev. Maurice Browne",
+    role: "Clergy",
+    imageUrl: "/team-members/newMauriceBrown.png",
   },
   {
     id: "4",
-    name: "Paul Parker",
-    role: "Administrator",
-    imageUrl: "/paulParker.jpeg",
+    name: "Vidal Williams",
+    role: "Treasurer",
+    imageUrl: "/team-members/vidalWilliams.jpeg",
   },
   {
     id: "5",
-    name: "Dennis John",
-    role: "Adviser",
-    imageUrl: "/dennisJohn.jpeg",
+    name: "Paul Parker",
+    role: "Administrator",
+    imageUrl: "/team-members/paulParker.jpeg",
   },
   {
     id: "6",
-    name: "Ekow Fraser",
+    name: "Dennis John",
     role: "Adviser",
-    imageUrl: "/ekowFraser.JPG",
+    imageUrl: "/team-members/dennisJohn.jpeg",
   },
   {
     id: "7",
-    name: "Michael Edwin",
+    name: "Ekow Fraser",
     role: "Adviser",
-    imageUrl: "/michaelEdwin.JPG",
+    imageUrl: "/team-members/ekowFraser.JPG",
   },
   {
     id: "8",
+    name: "Michael Edwin",
+    role: "Adviser",
+    imageUrl: "",
+  },
+  {
+    id: "9",
     name: "Frank Wellington",
     role: "Adviser",
-    imageUrl: "/frankWellignton.jpeg",
+    imageUrl: "/team-members/frankWellington.jpeg",
   },
 ];
 
@@ -76,20 +82,29 @@ export default function AboutPage() {
       <Hero
         title="About Us"
         description={`Welcome to the Regentonians' Benevolent Fund, learn about our mission, values, and how we operate`}
-      // imageUrl="/purplefootballteam.jpeg"
-      // imageAlt="About the fund mission"
-      // imagePosition="center"
+        // imageUrl="/purplefootballteam.jpeg"
+        // imageAlt="About the fund mission"
+        // imagePosition="center"
       >
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <span className="inline-flex items-center gap-2">
-            <DisclaimerIcon />
-            <Button href="/contribute" size="lg">
+        <div className="mx-auto flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
+          <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
+            <Button
+              href="/contribute"
+              size="lg"
+              className="w-full sm:w-auto sm:min-w-52"
+            >
               Contribute Now
             </Button>
-          </span>
-          <Button href="/join" variant="outline" size="lg">
-            How to Join
-          </Button>
+            <Button
+              href="/join"
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto sm:min-w-52"
+            >
+              How to Join
+            </Button>
+          </div>
+          <DisclaimerLink />
         </div>
       </Hero>
 
@@ -99,7 +114,7 @@ export default function AboutPage() {
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
             <div className="relative h-64 w-full overflow-hidden rounded-lg sm:h-80 lg:h-96 animate-fade-in-up">
               <Image
-                src="/ourMission.png"
+                src="/newOurMission.png"
                 alt="Community mission and purpose"
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"
@@ -110,17 +125,17 @@ export default function AboutPage() {
                 Our Mission
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                The Regentonians' Benevolent Fund (RBF) exists to provide
+                The Regentonians&apos; Benevolent Fund (RBF) exists to provide
                 compassionate welfare support to alumni of Sierra Leone Grammar
                 School during times of need. We believe in the power of
                 community, unity, and brotherhood to uplift and support one
-                another through life's challenges and celebrations.
+                another through life&apos;s challenges and celebrations.
               </p>
               <p className="mt-4 text-lg leading-8 text-muted-foreground">
                 Our purpose is to ensure that no Regentonian faces difficult
                 times alone, whether through bereavement, illness, or other life
                 challenges. We are committed to maintaining a transparent,
-                member-funded organization that operates with integrity and
+                member-funded organisation that operates with integrity and
                 care.
               </p>
             </div>
@@ -137,10 +152,11 @@ export default function AboutPage() {
                 Who We Support
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                The Regentonians' Benevolent Fund supports contributing Alumni of Sierra Leone
-                Grammar School. Our members are former students who share a
-                common bond through their educational experience and continue to
-                support one another throughout their lives.
+                The Regentonians&apos; Benevolent Fund supports contributing
+                Alumni of Sierra Leone Grammar School. Our members are former
+                students who share a common bond through their educational
+                experience and continue to support one another throughout their
+                lives.
               </p>
               <p className="mt-4 text-lg leading-8 text-muted-foreground">
                 We provide assistance to members and their families during times
@@ -278,7 +294,8 @@ export default function AboutPage() {
               Our People
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Meet the dedicated individuals who make the Regentonians' Benevolent Fund possible
+              Meet the dedicated individuals who make the Regentonians&apos;
+              Benevolent Fund possible
             </p>
           </div>
           <div className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -295,13 +312,25 @@ export default function AboutPage() {
                   className={`overflow-hidden animate-fade-in-up ${delayClass} transition-all duration-300 hover:shadow-lg flex flex-col items-center text-center`}
                 >
                   <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden bg-muted mt-6 shrink-0 ring-2 ring-primary/20">
-                    <Image
-                      src={member.imageUrl}
-                      alt={member.name}
-                      fill
-                      sizes="(max-width: 640px) 192px, 224px"
-                      className="object-cover object-top transition-transform duration-300 hover:scale-105"
-                    />
+                    {member.imageUrl ? (
+                      <Image
+                        src={member.imageUrl}
+                        alt={member.name}
+                        fill
+                        sizes="(max-width: 640px) 192px, 224px"
+                        className="object-cover object-top transition-transform duration-300 hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-primary/10">
+                        <span className="text-5xl font-bold tracking-widest text-primary">
+                          {member.name
+                            .split(" ")
+                            .map((n) => n.charAt(0))
+                            .slice(0, 2)
+                            .join("")}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <CardHeader className="text-center pb-2">
                     <CardTitle className="text-xl">{member.name}</CardTitle>

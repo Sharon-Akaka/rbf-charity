@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/hero";
-import { DisclaimerIcon } from "@/components/disclaimer-dialog";
+import { DisclaimerLink } from "@/components/disclaimer-dialog";
 import {
   Card,
   CardContent,
@@ -34,19 +34,19 @@ export default function Home() {
             <span className="h-px w-8 bg-foreground/40" aria-hidden />
           </p>
         </div>
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <span className="inline-flex items-center gap-2">
-            <DisclaimerIcon />
-            <Button href="/contribute" size="lg" className="transition-transform duration-200 hover:scale-105">
+        <div className="mx-auto mt-8 flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
+          <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
+            <Button href="/contribute" size="lg" className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52">
               Contribute Now
             </Button>
-          </span>
-          <Button href="/join" variant="outline" size="lg" className="transition-transform duration-200 hover:scale-105">
-            How to Join
-          </Button>
-          <Button href="/contact" variant="secondary" size="lg" className="transition-transform duration-200 hover:scale-105">
-            Contact Us
-          </Button>
+            <Button href="/join" variant="outline" size="lg" className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52">
+              How to Join
+            </Button>
+            <Button href="/contact" variant="secondary" size="lg" className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52">
+              Contact Us
+            </Button>
+          </div>
+          <DisclaimerLink />
         </div>
       </Hero>
 
@@ -56,7 +56,7 @@ export default function Home() {
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
             <div className="relative h-64 w-full overflow-hidden rounded-lg sm:h-80 lg:h-96 animate-fade-in-up">
               <Image
-                src="/whatwedo.png"
+                src="/whatWeDo.png"
                 alt="Community support and unity"
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"
@@ -94,11 +94,39 @@ export default function Home() {
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <Link href="/support#milestone-birthdays" className="block h-full">
+              <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-600 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
+                <div className="relative aspect-square w-full overflow-hidden">
+                  <Image
+                    src="/birthdayCard-SA.png"
+                    alt="Community celebration"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <CardHeader className="flex-1">
+                  <div className="mb-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                    <Users className="h-5 w-5 text-primary" />
+                  </div>
+                  <CardTitle className="text-xl">Milestone Birthdays</CardTitle>
+                  <CardDescription className="mt-2">Celebrating Together</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Recognising and celebrating significant milestone birthdays,
+                    honouring our members and strengthening the bonds of our
+                    community.
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+            
             <Link href="/support#bereavement-support" className="block h-full">
               <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-200 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
-                <div className="relative h-48 w-full overflow-hidden">
+                <div className="relative aspect-square w-full overflow-hidden">
                   <Image
-                    src="/bereavementsupport.jpeg"
+                    src="/lossCard-SA.png"
                     alt="Bereavement support and compassion"
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -124,9 +152,9 @@ export default function Home() {
 
             <Link href="/support#get-well-soon-support" className="block h-full">
               <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-400 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
-                <div className="relative h-48 w-full overflow-hidden">
+                <div className="relative aspect-square w-full overflow-hidden">
                   <Image
-                    src="/newgetwellsoon.jpeg"
+                    src="/wellSoonCard-SA.png"
                     alt="Health and recovery support"
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -150,37 +178,9 @@ export default function Home() {
               </Card>
             </Link>
 
-            <Link href="/support#milestone-birthdays" className="block h-full">
-              <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-600 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
-                <div className="relative h-48 w-full overflow-hidden">
-                  <Image
-                    src="/birthdayMilestone.jpeg"
-                    alt="Community celebration"
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <CardHeader className="flex-1">
-                  <div className="mb-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                    <Users className="h-5 w-5 text-primary" />
-                  </div>
-                  <CardTitle className="text-xl">Milestone Birthdays</CardTitle>
-                  <CardDescription className="mt-2">Celebrating Together</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Recognising and celebrating significant milestone birthdays,
-                    honouring our members and strengthening the bonds of our
-                    community.
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
-
             <Link href="/support#mentoring-scheme" className="block h-full">
               <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-600 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
-                <div className="relative h-48 w-full overflow-hidden">
+                <div className="relative aspect-square w-full overflow-hidden">
                   <Image
                     src="/mentoringMission.png"
                     alt="Mentoring and mission support"
@@ -218,22 +218,20 @@ export default function Home() {
               Join our community of caring alumni and make a difference in the
               lives of fellow Regentonians'.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <span className="inline-flex items-center gap-2">
-                <DisclaimerIcon />
+            <div className="mx-auto mt-10 flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
+              <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
                 <Button
                   href="/contribute"
                   size="lg"
-                  className="transition-transform duration-200 hover:scale-105"
+                  className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
                 >
                   Contribute Now
                 </Button>
-              </span>
               <Button
                 href="/join"
                 variant="outline"
                 size="lg"
-                className="transition-transform duration-200 hover:scale-105"
+                className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
               >
                 Join RBF
               </Button>
@@ -241,10 +239,12 @@ export default function Home() {
                 href="/contact"
                 variant="secondary"
                 size="lg"
-                className="transition-transform duration-200 hover:scale-105"
+                className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
               >
                 Contact Us
               </Button>
+              </div>
+              <DisclaimerLink />
             </div>
           </div>
         </div>

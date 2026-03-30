@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Hero } from "@/components/hero";
 import { Button } from "@/components/ui/button";
-import { DisclaimerIcon } from "@/components/disclaimer-dialog";
+import { DisclaimerLink } from "@/components/disclaimer-dialog";
 import { MembershipFormModal } from "@/components/membership-form-modal";
 import { Users, ArrowRight, CheckCircle } from "lucide-react";
 
@@ -13,20 +13,30 @@ export default function JoinPage() {
       <Hero
         title="How to Join"
         description="Become part of a community dedicated to supporting one another"
-      // imageUrl="/heroThree.JPG"
-      // imageAlt="Join our community"
-      // imagePosition="top"
+        // imageUrl="/heroThree.JPG"
+        // imageAlt="Join our community"
+        // imagePosition="top"
       >
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <span className="inline-flex items-center gap-2">
-            <DisclaimerIcon />
-            <Button href="/contribute" size="lg">
+        <div className="mx-auto flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
+          <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
+            <Button
+              href="/contribute"
+              size="lg"
+              className="w-full sm:w-auto sm:min-w-52"
+            >
               Contribute Now
             </Button>
-          </span>
-          <Button href="/contact" variant="outline" size="lg">
-            Contact Us
-          </Button>
+            <Button
+              href="/contact"
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto sm:min-w-52"
+            >
+              Contact Us
+            </Button>
+            <MembershipFormModal className="w-full sm:w-auto sm:min-w-52" />
+          </div>
+          <DisclaimerLink />
         </div>
       </Hero>
 
@@ -36,7 +46,7 @@ export default function JoinPage() {
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
             <div className="relative h-64 w-full overflow-hidden rounded-lg sm:h-80 lg:h-96 animate-fade-in-up">
               <Image
-                src="/ourMission.png"
+                src="/newOurMission.png"
                 alt="Community membership and joining"
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"
@@ -51,14 +61,16 @@ export default function JoinPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-lg leading-8 text-muted-foreground">
-                  The Regentonians' Benevolent Fund is open to all alumni of Sierra Leone Grammar School.
-                  Whether you graduated recently or many years ago, you are welcome to join our community
-                  of caring individuals committed to supporting one another.
+                  The Regentonians&apos; Benevolent Fund is open to all alumni
+                  of Sierra Leone Grammar School. Whether you graduated recently
+                  or many years ago, you are welcome to join our community of
+                  caring individuals committed to supporting one another.
                 </p>
                 <p className="text-lg leading-8 text-muted-foreground">
-                  Membership is open to former students who share our values of care, unity, and
-                  brotherhood. We believe that the bonds formed at Sierra Leone Grammar School create
-                  a lifelong connection that extends beyond graduation.
+                  Membership is open to former students who share our values of
+                  care, unity, and brotherhood. We believe that the bonds formed
+                  at Sierra Leone Grammar School create a lifelong connection
+                  that extends beyond graduation.
                 </p>
                 <div className="mt-6 space-y-3">
                   <div className="flex items-start gap-3">
@@ -94,11 +106,17 @@ export default function JoinPage() {
               Ready to Join?
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Complete our short membership application form to become part of the Regentonians&apos; Benevolent Fund community.
+              Complete our short membership application form to become part of
+              the Regentonians&apos; Benevolent Fund community.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <MembershipFormModal />
-              <Button href="/contact" variant="outline" size="lg" className="transition-transform duration-200 hover:scale-105">
+              <Button
+                href="/contact"
+                variant="outline"
+                size="lg"
+                className="transition-transform duration-200 hover:scale-105"
+              >
                 Questions? Contact Us
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -109,4 +127,3 @@ export default function JoinPage() {
     </div>
   );
 }
-
