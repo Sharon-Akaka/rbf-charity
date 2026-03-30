@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/hero";
-import { DisclaimerIcon } from "@/components/disclaimer-dialog";
+import { DisclaimerLink } from "@/components/disclaimer-dialog";
 import {
   Card,
   CardContent,
@@ -34,19 +34,19 @@ export default function Home() {
             <span className="h-px w-8 bg-foreground/40" aria-hidden />
           </p>
         </div>
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <span className="inline-flex items-center gap-2">
-            <DisclaimerIcon />
-            <Button href="/contribute" size="lg" className="transition-transform duration-200 hover:scale-105">
+        <div className="mx-auto mt-8 flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
+          <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
+            <Button href="/contribute" size="lg" className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52">
               Contribute Now
             </Button>
-          </span>
-          <Button href="/join" variant="outline" size="lg" className="transition-transform duration-200 hover:scale-105">
-            How to Join
-          </Button>
-          <Button href="/contact" variant="secondary" size="lg" className="transition-transform duration-200 hover:scale-105">
-            Contact Us
-          </Button>
+            <Button href="/join" variant="outline" size="lg" className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52">
+              How to Join
+            </Button>
+            <Button href="/contact" variant="secondary" size="lg" className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52">
+              Contact Us
+            </Button>
+          </div>
+          <DisclaimerLink />
         </div>
       </Hero>
 
@@ -218,22 +218,20 @@ export default function Home() {
               Join our community of caring alumni and make a difference in the
               lives of fellow Regentonians'.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <span className="inline-flex items-center gap-2">
-                <DisclaimerIcon />
+            <div className="mx-auto mt-10 flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
+              <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
                 <Button
                   href="/contribute"
                   size="lg"
-                  className="transition-transform duration-200 hover:scale-105"
+                  className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
                 >
                   Contribute Now
                 </Button>
-              </span>
               <Button
                 href="/join"
                 variant="outline"
                 size="lg"
-                className="transition-transform duration-200 hover:scale-105"
+                className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
               >
                 Join RBF
               </Button>
@@ -241,10 +239,12 @@ export default function Home() {
                 href="/contact"
                 variant="secondary"
                 size="lg"
-                className="transition-transform duration-200 hover:scale-105"
+                className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
               >
                 Contact Us
               </Button>
+              </div>
+              <DisclaimerLink />
             </div>
           </div>
         </div>

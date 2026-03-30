@@ -9,7 +9,7 @@ import { Hero } from "@/components/hero";
 import { Mail, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/contact-form";
-import { DisclaimerIcon } from "@/components/disclaimer-dialog";
+import { DisclaimerLink } from "@/components/disclaimer-dialog";
 
 export default function ContactPage() {
   return (
@@ -22,16 +22,16 @@ export default function ContactPage() {
       // imageAlt="Contact us"
       // imagePosition="center"
       >
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <span className="inline-flex items-center gap-2">
-            <DisclaimerIcon />
-            <Button href="/contribute" size="lg">
+        <div className="mx-auto flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
+          <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
+            <Button href="/contribute" size="lg" className="w-full sm:w-auto sm:min-w-52">
               Contribute Now
             </Button>
-          </span>
-          <Button href="/join" variant="outline" size="lg">
+          <Button href="/join" variant="outline" size="lg" className="w-full sm:w-auto sm:min-w-52">
             How to Join
           </Button>
+          </div>
+          <DisclaimerLink />
         </div>
       </Hero>
 
