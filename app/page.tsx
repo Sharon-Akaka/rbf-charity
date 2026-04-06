@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/hero";
 import { DisclaimerLink } from "@/components/disclaimer-dialog";
+import { PolicyModal } from "@/components/policy-modal";
 import {
   Card,
   CardContent,
@@ -53,14 +54,7 @@ export default function Home() {
             >
               How to Join
             </Button>
-            <Button
-              href="/contact"
-              variant="secondary"
-              size="lg"
-              className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
-            >
-              Contact Us
-            </Button>
+            <PolicyModal asButton className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52" />
           </div>
           <DisclaimerLink />
         </div>
@@ -270,14 +264,7 @@ export default function Home() {
                 >
                   Join RBF
                 </Button>
-                <Button
-                  href="/contact"
-                  variant="secondary"
-                  size="lg"
-                  className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
-                >
-                  Contact Us
-                </Button>
+                <PolicyModal asButton className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52" />
               </div>
               <DisclaimerLink />
             </div>

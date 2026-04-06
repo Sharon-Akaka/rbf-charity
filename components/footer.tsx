@@ -31,7 +31,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="md:border-l md:border-border md:pl-8">
             <h4 className="mb-4 font-semibold text-foreground">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
@@ -75,6 +75,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/gallery"
+                  className="text-muted-foreground hover:text-primary"
+                >
+                  Gallery
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/contact"
                   className="text-muted-foreground hover:text-primary"
                 >
@@ -84,7 +92,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contribute"
-                  className="text-muted-foreground hover:text-primary font-medium"
+                  className="text-muted-foreground hover:text-primary"
                 >
                   Contribute
                 </Link>
