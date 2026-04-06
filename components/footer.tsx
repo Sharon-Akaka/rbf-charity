@@ -75,6 +75,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/gallery"
+                  className="text-muted-foreground hover:text-primary"
+                >
+                  Gallery
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/contact"
                   className="text-muted-foreground hover:text-primary"
                 >
