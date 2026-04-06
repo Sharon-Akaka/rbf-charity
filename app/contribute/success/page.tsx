@@ -223,7 +223,7 @@ function DonateSuccessContent() {
                     Return Home
                   </Button>
                   <Button
-                    href="/donate"
+                    href="/contribute"
                     variant="outline"
                     size="lg"
                     className="transition-transform duration-200 hover:scale-105"

@@ -112,6 +112,17 @@ export function MembershipForm() {
           Your membership application has been received. A member of the team
           will be in touch with you shortly.
         </p>
+        <div className="rounded-md border-2 border-primary bg-primary/10 px-5 py-4 text-left">
+          <p className="font-bold text-foreground">
+            Please ensure that you have completed the standing order using the bank details provided.
+          </p>
+          <div className="mt-3 space-y-1 text-sm text-muted-foreground">
+            <p><strong className="text-foreground">Bank:</strong> HSBC Bank UK</p>
+            <p><strong className="text-foreground">Account Name:</strong> The Regentonians&apos; Benevolent Fund</p>
+            <p><strong className="text-foreground">Sort Code:</strong> 401904</p>
+            <p><strong className="text-foreground">Account Number:</strong> 82252872</p>
+          </div>
+        </div>
         <p className="text-sm text-muted-foreground">
           We&apos;ve sent your application details, including your email
           address, through to the membership form for review.

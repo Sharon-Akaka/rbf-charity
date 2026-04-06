@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Hero } from "@/components/hero";
 import { Button } from "@/components/ui/button";
 import { DisclaimerLink } from "@/components/disclaimer-dialog";
-import { MembershipFormModal } from "@/components/membership-form-modal";
 import { Users, ArrowRight, CheckCircle } from "lucide-react";
 
 export default function JoinPage() {
@@ -34,7 +33,13 @@ export default function JoinPage() {
             >
               Contact Us
             </Button>
-            <MembershipFormModal className="w-full sm:w-auto sm:min-w-52" />
+            <Button
+              href="/join/apply"
+              size="lg"
+              className="w-full sm:w-auto sm:min-w-52"
+            >
+              Apply for Membership
+            </Button>
           </div>
           <DisclaimerLink />
         </div>
@@ -110,7 +115,13 @@ export default function JoinPage() {
               the Regentonians&apos; Benevolent Fund community.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <MembershipFormModal />
+              <Button
+                href="/join/apply"
+                size="lg"
+                className="transition-transform duration-200 hover:scale-105"
+              >
+                Apply for Membership
+              </Button>
               <Button
                 href="/contact"
                 variant="outline"

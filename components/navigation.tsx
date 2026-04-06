@@ -6,7 +6,6 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { MembershipFormModal } from "@/components/membership-form-modal";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -69,13 +68,12 @@ export function Navigation() {
             </Link>
 
             {/* Secondary CTA */}
-            <MembershipFormModal
-              size="default"
-              animated={false}
-              showIcon={false}
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary/10"
-            />
+            <Link
+              href="/join/apply"
+              className="rounded-md border border-primary px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10 h-10 inline-flex items-center"
+            >
+              Apply for Membership
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -128,13 +126,13 @@ export function Navigation() {
                 >
                   Contribute
                 </Link>
-                <MembershipFormModal
-                  size="sm"
-                  animated={false}
-                  showIcon={false}
-                  variant="outline"
-                  className="flex-1 border-primary text-primary hover:bg-primary/10"
-                />
+                <Link
+                  href="/join/apply"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex-1 text-center rounded-md border border-primary px-3 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+                >
+                  Apply for Membership
+                </Link>
               </div>
             </div>
           </div>

@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import {
   Card,
   CardContent,
@@ -6,10 +9,37 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Hero } from "@/components/hero";
-import { Calendar, Camera, Clock, MapPin } from "lucide-react";
+import { Calendar, Camera, Clock, MapPin, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DisclaimerLink } from "@/components/disclaimer-dialog";
-import { getCommunityEvents, getGalleryAlbumByEventId } from "@/lib/community-data";
+import { getCommunityEvents, getGalleryAlbumByEventId, CommunityEventWithStatus } from "@/lib/community-data";
+
+function EventDescription({ event }: { event: CommunityEventWithStatus }) {
+  const [expanded, setExpanded] = useState(false);
+  const { preview, remainder } = splitDescription(event.description);
+
+  return (
+    <div className="mt-2">
+      <p className="text-sm text-muted-foreground">
+        {expanded ? event.description : preview}
+        {!expanded && remainder && "..."}
+      </p>
+      {remainder && (
+        <button
+          type="button"
+          onClick={() => setExpanded(!expanded)}
+          className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-primary underline underline-offset-4"
+        >
+          {expanded ? (
+            <><ChevronUp className="h-3 w-3" /> Show less</>
+          ) : (
+            <><ChevronDown className="h-3 w-3" /> Read more</>
+          )}
+        </button>
+      )}
+    </div>
+  );
+}
 
 function splitDescription(description: string, previewLength = 125) {
   if (description.length <= previewLength) {
@@ -68,7 +98,6 @@ export default function EventsPage() {
             <div className="mx-auto grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {events.map((event, index) => {
                 const linkedAlbum = getGalleryAlbumByEventId(event._id);
-                const { preview, remainder } = splitDescription(event.description);
                 const delayClass =
                   index % 3 === 0
                     ? "animation-delay-200"
@@ -100,22 +129,7 @@ export default function EventsPage() {
                       <CardTitle className="text-xl sm:text-2xl line-clamp-2">
                         {event.title}
                       </CardTitle>
-                      <div className="mt-2">
-                        <p className="text-sm text-muted-foreground">
-                          {preview}
-                          {remainder && "..."}
-                        </p>
-                        {remainder && (
-                          <details className="mt-2">
-                            <summary className="cursor-pointer text-xs font-medium text-primary underline underline-offset-4 marker:text-primary">
-                              Read full details
-                            </summary>
-                            <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                              {remainder}
-                            </p>
-                          </details>
-                        )}
-                      </div>
+                      <EventDescription event={event} />
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
