@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { MembershipForm } from "@/components/membership-form";
 import { ClipboardList, CheckCircle, Users, Heart, Shield } from "lucide-react";
 import { DisclaimerLink } from "@/components/disclaimer-dialog";
+import { PolicyModal } from "@/components/policy-modal";
 
 export default function MembershipApplicationPage() {
   return (
@@ -20,6 +21,7 @@ export default function MembershipApplicationPage() {
             <Button href="/contact" variant="outline" size="lg" className="w-full sm:w-auto sm:min-w-52">
               Contact Us
             </Button>
+            <PolicyModal asButton className="w-full sm:w-auto sm:min-w-52" />
           </div>
           <DisclaimerLink />
         </div>

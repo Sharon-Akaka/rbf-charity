@@ -81,8 +81,8 @@ export function DonationReceiptEmail({
             <Hr style={divider} />
 
             <Text style={paragraph}>
-              Your contribution is tax-deductible, and we will send you a formal
-              receipt for your records. If you have any questions about your
+              Please note that contributions to the RBF are not tax-deductible as
+              we are not a registered charity. If you have any questions about your
               contribution, please don't hesitate to{" "}
               <Link href={`${publicUrl}/contact`} style={link}>
                 contact us

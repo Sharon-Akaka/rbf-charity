@@ -6,6 +6,7 @@ import { Hero } from "@/components/hero";
 import { DonationForm } from "@/components/donation-form";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Shield, CheckCircle, XCircle, GraduationCap } from "lucide-react";
+import { PolicyModal } from "@/components/policy-modal";
 
 function CanceledMessage() {
   const searchParams = useSearchParams();
@@ -15,11 +16,7 @@ function CanceledMessage() {
   useEffect(() => {
     if (canceled === "true") {
       setShowCanceled(true);
-      // Clear the URL parameter after showing the message
-      window.history.replaceState({}, "", "/donate");
-      // Hide the message after 10 seconds
-      const timer = setTimeout(() => setShowCanceled(false), 10000);
-      return () => clearTimeout(timer);
+      window.history.replaceState({}, "", "/contribute");
     }
   }, [canceled]);
 
@@ -68,7 +65,13 @@ export default function DonatePage() {
         description="Your contribution helps us provide compassionate welfare support to alumni of Sierra Leone Grammar School during times of need."
         imageUrl="/support.png"
         imageAlt="Support and community"
-      />
+      >
+        <div className="mx-auto flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
+          <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
+            <PolicyModal asButton className="w-full sm:w-auto sm:min-w-52" />
+          </div>
+        </div>
+      </Hero>
 
       <section className="py-16 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,100 +1,72 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Hero } from "@/components/hero";
-import { Calendar, MapPin, Clock } from "lucide-react";
+import { Calendar, Camera, Clock, MapPin, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DisclaimerLink } from "@/components/disclaimer-dialog";
+import { getCommunityEvents, getGalleryAlbumByEventId, CommunityEventWithStatus } from "@/lib/community-data";
 
-interface Event {
-  _id: string;
-  title: string;
-  description: string;
-  date: string;
-  time: string;
-  location: string;
-  imageUrl?: string;
+function EventDescription({ event }: { event: CommunityEventWithStatus }) {
+  const [expanded, setExpanded] = useState(false);
+  const { preview, remainder } = splitDescription(event.description);
+
+  return (
+    <div className="mt-2">
+      <p className="text-sm text-muted-foreground">
+        {expanded ? event.description : preview}
+        {!expanded && remainder && "..."}
+      </p>
+      {remainder && (
+        <button
+          type="button"
+          onClick={() => setExpanded(!expanded)}
+          className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-primary underline underline-offset-4"
+        >
+          {expanded ? (
+            <><ChevronUp className="h-3 w-3" /> Show less</>
+          ) : (
+            <><ChevronDown className="h-3 w-3" /> Read more</>
+          )}
+        </button>
+      )}
+    </div>
+  );
 }
 
-function getEvents(): Event[] {
-  // Dummy data - limited to 8 events
-  const dummyEvents: Event[] = [
-    {
-      _id: "1",
-      title: "Thanksgiving",
-      description: "Join us for our annual Thanksgiving celebration, bringing together the Regentonians' community in gratitude and fellowship.",
-      date: "22nd March 2026",
-      time: "TBC",
-      location: "London, UK",
-      imageUrl: "/thanksgiving.jpg",
-    },
-    {
-      _id: "2",
-      title: "All Regentonians' Evening (A.R.E)",
-      description: "An exclusive evening for all Regentonians' to reconnect, share memories, and strengthen our bonds of brotherhood.",
-      date: "October 26",
-      time: "TBC",
-      location: "London, UK",
-      imageUrl: "/are.jpeg",
-    },
-    {
-      _id: "3",
-      title: "End of Year Social Evening",
-      description: "Celebrate the year's achievements and look forward to the future at our annual end-of-year social gathering.",
-      date: "December 26",
-      time: "TBC",
-      location: "London, UK",
-      imageUrl: "/heroThree.JPG",
-    },
-    {
-      _id: "4",
-      title: "Collaboration",
-      description: "A networking and collaboration event focused on building partnerships and supporting community initiatives.",
-      date: "TBC",
-      time: "TBC",
-      location: "London, UK",
-      imageUrl: "/eventPlaceholder.png",
-    },
-    {
-      _id: "5",
-      title: "RBF Fun at the Park (Bring and Share)",
-      description: "A relaxed family-friendly gathering in the park. Bring your favourite dish to share and enjoy games, food, and fellowship.",
-      date: "Summer 2026",
-      time: "TBC",
-      location: "London, UK",
-      imageUrl: "/eventPlaceholder.png",
-    },
-    {
-      _id: "6",
-      title: "Dinner and Dance",
-      description: "An elegant evening of fine dining and dancing. Dress to impress and celebrate our community in style.",
-      date: "TBC",
-      time: "TBC",
-      location: "London, UK",
-      imageUrl: "/eventPlaceholder.png",
-    },
-    {
-      _id: "7",
-      title: "Annual General Meeting",
-      description: "Join us for our Annual General Meeting to review the year's activities, discuss future plans, and vote on important matters.",
-      date: "September 2026",
-      time: "TBC",
-      location: "London, UK",
-      imageUrl: "/eventPlaceholder.png",
-    },
-  ];
+function splitDescription(description: string, previewLength = 125) {
+  if (description.length <= previewLength) {
+    return { preview: description, remainder: "" };
+  }
 
-  // Limit to 8 events (though we only have 7)
-  return dummyEvents.slice(0, 8);
+  const cutoff = description.lastIndexOf(" ", previewLength);
+  const safeCutoff = cutoff > 0 ? cutoff : previewLength;
+
+  return {
+    preview: description.slice(0, safeCutoff).trimEnd(),
+    remainder: description.slice(safeCutoff).trimStart(),
+  };
 }
 
 export default function EventsPage() {
-  const events = getEvents();
+  const events = getCommunityEvents();
+  const statusStyles = {
+    upcoming: "border-emerald-200 bg-emerald-100 text-emerald-800",
+    planned: "border-amber-200 bg-amber-100 text-amber-800",
+    passed: "border-slate-200 bg-slate-100 text-slate-700",
+  } as const;
+  const statusLabel = {
+    upcoming: "Upcoming",
+    planned: "Planned",
+    passed: "Event has passed",
+  } as const;
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -125,6 +97,7 @@ export default function EventsPage() {
           {events.length > 0 ? (
             <div className="mx-auto grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {events.map((event, index) => {
+                const linkedAlbum = getGalleryAlbumByEventId(event._id);
                 const delayClass =
                   index % 3 === 0
                     ? "animation-delay-200"
@@ -134,6 +107,7 @@ export default function EventsPage() {
                 return (
                   <Card
                     key={event._id}
+                    id={`event-${event._id}`}
                     className={`group border-2 overflow-hidden animate-fade-in-up ${delayClass} transition-all duration-300 hover:shadow-lg flex flex-col`}
                   >
                     {event.imageUrl && (
@@ -147,12 +121,15 @@ export default function EventsPage() {
                       </div>
                     )}
                     <CardHeader className="flex-1">
+                      <span
+                        className={`inline-flex w-fit items-center rounded-full border px-2.5 py-1 text-xs font-medium ${statusStyles[event.status]}`}
+                      >
+                        {statusLabel[event.status]}
+                      </span>
                       <CardTitle className="text-xl sm:text-2xl line-clamp-2">
                         {event.title}
                       </CardTitle>
-                      <CardDescription className="text-sm line-clamp-2 mt-2">
-                        {event.description}
-                      </CardDescription>
+                      <EventDescription event={event} />
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -169,6 +146,21 @@ export default function EventsPage() {
                         <MapPin className="h-4 w-4 text-primary shrink-0" />
                         <span className="truncate">{event.location}</span>
                       </div>
+                      {event.status === "passed" && linkedAlbum && (
+                        <Button
+                          href={`/gallery#${linkedAlbum.id}`}
+                          variant="secondary"
+                          className="w-full"
+                        >
+                          <Camera className="mr-2 h-4 w-4" />
+                          View Event Photos
+                        </Button>
+                      )}
+                      {event.status === "passed" && !linkedAlbum && (
+                        <p className="rounded-md border border-dashed border-border px-3 py-2 text-xs text-muted-foreground">
+                          Event has passed. Photos will be added to the gallery soon.
+                        </p>
+                      )}
                     </CardContent>
                   </Card>
                 );
@@ -190,16 +182,21 @@ export default function EventsPage() {
           {/* Upcoming Events Note */}
           {events.length > 0 && (
             <div className="mx-auto mt-12 max-w-2xl text-center">
-              <Card className="bg-muted">
-                <CardContent className="pt-6">
-                  <p className="text-muted-foreground">
-                    More events will be announced throughout the year. Check
-                    back regularly or contact us to be added to our mailing list
-                    for event updates.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+                <Card className="bg-muted">
+                  <CardContent className="pt-6">
+                    <p className="text-muted-foreground">
+                      More events will be announced throughout the year. Check
+                      back regularly or contact us to be added to our mailing list
+                      for event updates.
+                    </p>
+                    <div className="mt-4">
+                      <Button href="/gallery" variant="outline">
+                        Browse Photo Gallery
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
           )}
         </div>
       </section>

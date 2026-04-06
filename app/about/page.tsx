@@ -300,12 +300,18 @@ export default function AboutPage() {
           </div>
           <div className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {teamMembers.map((member, index) => {
-              const delayClass =
-                index % 3 === 0
-                  ? "animation-delay-200"
-                  : index % 3 === 1
-                    ? "animation-delay-400"
-                    : "animation-delay-600";
+              const delays = [
+                "",
+                "animation-delay-200",
+                "animation-delay-400",
+                "animation-delay-600",
+                "animation-delay-800",
+                "animation-delay-1000",
+                "animation-delay-1200",
+                "animation-delay-1400",
+                "animation-delay-1600",
+              ];
+              const delayClass = delays[index] ?? "";
               return (
                 <Card
                   key={member.id}
