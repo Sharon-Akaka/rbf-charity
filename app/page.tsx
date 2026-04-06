@@ -18,14 +18,16 @@ export default function Home() {
       {/* Hero Section */}
       <Hero
         title="The Regentonians' Benevolent Fund"
-      // imageUrl="/heroOne.JPG"
-      // imageAlt="Community support and unity"
-      // imagePosition="center"
+        // imageUrl="/heroOne.JPG"
+        // imageAlt="Community support and unity"
+        // imagePosition="center"
       >
         <div className="space-y-2">
           <p className="text-lg leading-7 text-foreground/90 sm:text-xl">
-            Providing compassionate welfare support to alumni of Sierra Leone Grammar School in times of need.
-            Rooted in <span className="font-semibold">care</span>, <span className="font-semibold">unity</span> and{" "}
+            Providing compassionate welfare support to alumni of Sierra Leone
+            Grammar School in times of need. Rooted in{" "}
+            <span className="font-semibold">care</span>,{" "}
+            <span className="font-semibold">unity</span> and{" "}
             <span className="font-semibold">brotherhood</span>.
           </p>
           <p className="flex items-center justify-center gap-3 text-sm italic text-foreground/70 sm:text-base">
@@ -36,13 +38,27 @@ export default function Home() {
         </div>
         <div className="mx-auto mt-8 flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none">
           <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
-            <Button href="/contribute" size="lg" className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52">
+            <Button
+              href="/contribute"
+              size="lg"
+              className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
+            >
               Contribute Now
             </Button>
-            <Button href="/join" variant="outline" size="lg" className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52">
+            <Button
+              href="/join"
+              variant="outline"
+              size="lg"
+              className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
+            >
               How to Join
             </Button>
-            <Button href="/contact" variant="secondary" size="lg" className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52">
+            <Button
+              href="/contact"
+              variant="secondary"
+              size="lg"
+              className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
+            >
               Contact Us
             </Button>
           </div>
@@ -68,14 +84,14 @@ export default function Home() {
                 What We Do
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                The Regentonians' Benevolent Fund (RBF) is a member-funded
-                charity dedicated to supporting alumni of Sierra Leone Grammar
-                School. We provide compassionate assistance during difficult
-                times, celebrating milestones, and fostering a strong sense of
-                community and brotherhood. <br /> It is not a registered charity or charitable
-                trust, it is an internal support initiative under the Sierra Leone Grammar School Old
-                Boys’ Association Foundation Trust (UK) for the benefit of its members and related
-                persons.
+                The Regentonians' Benevolent Fund (RBF) is a member-funded club
+                dedicated to supporting alumni of Sierra Leone Grammar School.
+                We provide compassionate assistance during difficult times,
+                celebrating milestones, and fostering a strong sense of
+                community and brotherhood. <br /> It is not a registered charity
+                or charitable trust, it is an internal support initiative under
+                the Sierra Leone Grammar School Old Boys’ Association Foundation
+                Trust (UK) for the benefit of its members and related persons.
               </p>
             </div>
           </div>
@@ -110,7 +126,9 @@ export default function Home() {
                     <Users className="h-5 w-5 text-primary" />
                   </div>
                   <CardTitle className="text-xl">Milestone Birthdays</CardTitle>
-                  <CardDescription className="mt-2">Celebrating Together</CardDescription>
+                  <CardDescription className="mt-2">
+                    Celebrating Together
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -121,7 +139,7 @@ export default function Home() {
                 </CardContent>
               </Card>
             </Link>
-            
+
             <Link href="/support#bereavement-support" className="block h-full">
               <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-200 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
                 <div className="relative aspect-square w-full overflow-hidden">
@@ -138,19 +156,24 @@ export default function Home() {
                     <Heart className="h-5 w-5 text-primary" />
                   </div>
                   <CardTitle className="text-xl">Bereavement Support</CardTitle>
-                  <CardDescription className="mt-2">&ldquo;Cry Berrin&rdquo;</CardDescription>
+                  <CardDescription className="mt-2">
+                    &ldquo;Cry Berrin&rdquo;
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     Providing compassionate support and financial assistance to
-                    families during times of loss, helping them navigate difficult
-                    periods with dignity and care.
+                    families during times of loss, helping them navigate
+                    difficult periods with dignity and care.
                   </p>
                 </CardContent>
               </Card>
             </Link>
 
-            <Link href="/support#get-well-soon-support" className="block h-full">
+            <Link
+              href="/support#get-well-soon-support"
+              className="block h-full"
+            >
               <Card className="group border-2 overflow-hidden animate-fade-in-up animation-delay-400 flex flex-col transition-all duration-300 hover:shadow-lg h-full cursor-pointer">
                 <div className="relative aspect-square w-full overflow-hidden">
                   <Image
@@ -165,8 +188,12 @@ export default function Home() {
                   <div className="mb-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                     <HandHeart className="h-5 w-5 text-primary" />
                   </div>
-                  <CardTitle className="text-xl">Get Well Soon Support</CardTitle>
-                  <CardDescription className="mt-2">Health &amp; Recovery</CardDescription>
+                  <CardTitle className="text-xl">
+                    Get Well Soon Support
+                  </CardTitle>
+                  <CardDescription className="mt-2">
+                    Health &amp; Recovery
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -193,12 +220,18 @@ export default function Home() {
                   <div className="mb-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                     <GraduationCap className="h-5 w-5 text-primary" />
                   </div>
-                  <CardTitle className="text-xl">Mission: Mentoring Scheme</CardTitle>
-                  <CardDescription className="mt-2">Personal &amp; Professional Growth</CardDescription>
+                  <CardTitle className="text-xl">
+                    Mission: Mentoring Scheme
+                  </CardTitle>
+                  <CardDescription className="mt-2">
+                    Personal &amp; Professional Growth
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Our mentoring scheme supports members&apos; personal and professional development by connecting them with peers for guidance and shared experience.
+                    Our mentoring scheme supports members&apos; personal and
+                    professional development by connecting them with peers for
+                    guidance and shared experience.
                   </p>
                 </CardContent>
               </Card>
@@ -227,22 +260,22 @@ export default function Home() {
                 >
                   Contribute Now
                 </Button>
-              <Button
-                href="/join"
-                variant="outline"
-                size="lg"
-                className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
-              >
-                Join RBF
-              </Button>
-              <Button
-                href="/contact"
-                variant="secondary"
-                size="lg"
-                className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
-              >
-                Contact Us
-              </Button>
+                <Button
+                  href="/join"
+                  variant="outline"
+                  size="lg"
+                  className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
+                >
+                  Join RBF
+                </Button>
+                <Button
+                  href="/contact"
+                  variant="secondary"
+                  size="lg"
+                  className="w-full transition-transform duration-200 hover:scale-105 sm:w-auto sm:min-w-52"
+                >
+                  Contact Us
+                </Button>
               </div>
               <DisclaimerLink />
             </div>
