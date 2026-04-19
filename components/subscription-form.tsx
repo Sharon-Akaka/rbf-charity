@@ -37,18 +37,22 @@ function ordinal(n: number): string {
 
 // ─── Inner confirmation form (must live inside <Elements>) ────────────────────
 
+type StartMode = "today" | "choose";
+
 interface SubscriptionResult {
   firstPayment: string;
   renewal: string;
-  billingDay: number;
+  billingDay: number | null;
   interval: Interval;
+  startMode: StartMode;
 }
 
 interface ConfirmFormProps {
   planName: string;
   amount: number;
   interval: Interval;
-  billingDay: number;
+  billingDay: number | null;
+  startMode: StartMode;
   currency: string;
   email: string;
   name: string;
@@ -61,6 +65,7 @@ function ConfirmForm({
   amount,
   interval,
   billingDay,
+  startMode,
   currency,
   email,
   name,
@@ -129,7 +134,7 @@ function ConfirmForm({
           amount,
           email,
           name: name || undefined,
-          billingDay,
+          billingDay: startMode === "today" ? null : billingDay,
         }),
       });
       const data = await res.json();
@@ -138,8 +143,9 @@ function ConfirmForm({
       onSuccess({
         firstPayment: fmtDate(data.firstPaymentTs),
         renewal: fmtDate(data.renewalTs),
-        billingDay: data.billingDay,
+        billingDay: data.billingDay ?? null,
         interval,
+        startMode,
       });
     } catch (err: any) {
       setError(err.message || "Failed to activate subscription. Please try again.");
@@ -161,11 +167,13 @@ function ConfirmForm({
           </span>
         </div>
         <div className="flex justify-between">
-          <span className="text-muted-foreground">Billing day</span>
+          <span className="text-muted-foreground">First payment</span>
           <span className="font-semibold">
-            {interval === "month"
-              ? `${ordinal(billingDay)} of each month`
-              : `${ordinal(billingDay)} of the month, annually`}
+            {startMode === "today"
+              ? "Today"
+              : interval === "month"
+              ? `${ordinal(billingDay!)} of each month`
+              : `${ordinal(billingDay!)} of the month, annually`}
           </span>
         </div>
       </div>
@@ -233,6 +241,7 @@ export function SubscriptionForm({
   const [step, setStep] = useState<Step>("details");
   const [interval, setInterval] = useState<Interval>("month");
   const [chosenAmount, setChosenAmount] = useState("5");
+  const [startMode, setStartMode] = useState<StartMode>("today");
   const [billingDay, setBillingDay] = useState(1);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -253,6 +262,10 @@ export function SubscriptionForm({
   const handleContinue = async () => {
     if (parsedAmount < minimum) {
       setError(`Minimum amount is £${minimum}${intervalLabel[interval]}.`);
+      return;
+    }
+    if (!name.trim()) {
+      setError("Please enter your full name.");
       return;
     }
     if (!email) {
@@ -315,9 +328,13 @@ export function SubscriptionForm({
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground">Then every</span>
               <span className="font-semibold">
-                {subResult.interval === "month"
-                  ? `${ordinal(subResult.billingDay)} of each month`
-                  : `${ordinal(subResult.billingDay)} of the month, annually`}
+                {subResult.startMode === "today"
+                  ? subResult.interval === "month"
+                    ? "Same day each month"
+                    : "Same date each year"
+                  : subResult.interval === "month"
+                  ? `${ordinal(subResult.billingDay!)} of each month`
+                  : `${ordinal(subResult.billingDay!)} of the month, annually`}
               </span>
             </div>
             <div className="flex justify-between text-sm">
@@ -406,40 +423,70 @@ export function SubscriptionForm({
               </p>
             </div>
 
-            {/* Preferred billing date */}
+            {/* When to start */}
             <div className="space-y-2">
-              <label htmlFor="sub-billing-day" className="text-sm font-medium">
-                Preferred Billing Date
+              <label className="text-sm font-medium">
+                When would you like to start? <span className="text-red-500">*</span>
               </label>
-              <select
-                id="sub-billing-day"
-                value={billingDay}
-                onChange={(e) => setBillingDay(Number(e.target.value))}
-                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                {BILLING_DAYS.map((d) => (
-                  <option key={d} value={d}>
-                    {ordinal(d)} of the month
-                  </option>
+              <div className="grid grid-cols-2 gap-3">
+                {(["today", "choose"] as StartMode[]).map((mode) => (
+                  <button
+                    key={mode}
+                    type="button"
+                    onClick={() => setStartMode(mode)}
+                    className={`rounded-md border-2 px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                      startMode === mode
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-input bg-background hover:border-primary/50 hover:bg-accent"
+                    }`}
+                  >
+                    {mode === "today" ? "Start today" : "Choose a date"}
+                  </button>
                 ))}
-              </select>
-              <p className="text-xs text-muted-foreground">
-                {interval === "month"
-                  ? "Your card won't be charged until this date. If it has already passed this month, your first payment will be next month."
-                  : "Your annual payment will fall on this day. If this date hasn't passed yet this month, your first payment will be this month — otherwise next month."}
-              </p>
+              </div>
+              {startMode === "today" ? (
+                <p className="text-xs text-muted-foreground">
+                  Your first payment will be collected today. Future{" "}
+                  {interval === "month" ? "monthly" : "annual"} payments will
+                  renew on the same date each {interval === "month" ? "month" : "year"}.
+                </p>
+              ) : (
+                <>
+                  <select
+                    id="sub-billing-day"
+                    value={billingDay}
+                    onChange={(e) => setBillingDay(Number(e.target.value))}
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    {BILLING_DAYS.map((d) => (
+                      <option key={d} value={d}>
+                        {ordinal(d)} of the month
+                      </option>
+                    ))}
+                  </select>
+                  <p className="text-xs text-muted-foreground">
+                    {interval === "month"
+                      ? "Your card won't be charged until this date. If it has already passed this month, your first payment will be next month."
+                      : "Your annual payment will fall on this day. If this date hasn't passed yet this month, your first payment will be this month — otherwise next month."}
+                  </p>
+                </>
+              )}
             </div>
 
             {/* Name */}
             <div className="space-y-2">
               <label htmlFor="sub-name" className="text-sm font-medium">
-                Full Name (Optional)
+                Full Name <span className="text-red-500">*</span>
               </label>
               <input
                 id="sub-name"
                 type="text"
+                required
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setError("");
+                }}
                 placeholder="Your name"
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               />
@@ -477,7 +524,7 @@ export function SubscriptionForm({
               onClick={handleContinue}
               size="lg"
               className="w-full transition-transform duration-200 hover:scale-105"
-              disabled={loading || !email || parsedAmount < minimum}
+              disabled={loading || !email || !name.trim() || parsedAmount < minimum}
             >
               {loading ? (
                 <>
@@ -487,8 +534,12 @@ export function SubscriptionForm({
               ) : (
                 <>
                   <RefreshCw className="mr-2 h-4 w-4" />
-                  Continue — {parsedAmount >= minimum ? fmt(parsedAmount) : `£${minimum}`}
-                  {intervalLabel[interval]} from the {ordinal(billingDay)}
+                  Continue —{" "}
+                  {parsedAmount >= minimum ? fmt(parsedAmount) : `£${minimum}`}
+                  {intervalLabel[interval]}{" "}
+                  {startMode === "today"
+                    ? "starting today"
+                    : `from the ${ordinal(billingDay)}`}
                 </>
               )}
             </Button>
@@ -504,7 +555,8 @@ export function SubscriptionForm({
               planName={planName}
               amount={parsedAmount}
               interval={interval}
-              billingDay={billingDay}
+              billingDay={startMode === "today" ? null : billingDay}
+              startMode={startMode}
               currency={currency}
               email={email}
               name={name}

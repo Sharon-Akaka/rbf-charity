@@ -59,9 +59,10 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-    if (!billingDay || !VALID_BILLING_DAYS.includes(Number(billingDay))) {
+    // billingDay is optional — null means start today (charge immediately)
+    if (billingDay !== null && billingDay !== undefined && !VALID_BILLING_DAYS.includes(Number(billingDay))) {
       return NextResponse.json(
-        { error: `billingDay must be one of: ${VALID_BILLING_DAYS.join(", ")}` },
+        { error: `billingDay must be one of: ${VALID_BILLING_DAYS.join(", ")} or null` },
         { status: 400 }
       );
     }
@@ -109,38 +110,41 @@ export async function POST(req: NextRequest) {
       product: process.env.STRIPE_PRODUCT_ID,
     });
 
-    // --- 7. Calculate billing anchor ---
-    // billing_cycle_anchor sets the day billing repeats on.
-    // proration_behavior: "none" means no charge until the anchor date —
-    // the user pays nothing between signup and their chosen billing day.
-    const anchorTs = nextBillingAnchor(Number(billingDay));
+    const startToday = billingDay === null || billingDay === undefined;
+    const anchorTs = startToday ? null : nextBillingAnchor(Number(billingDay));
 
-    // --- 8. Create subscription ---
+    // --- 7. Create subscription ---
+    // If startToday: no anchor, Stripe charges immediately.
+    // If a billing day is chosen: anchor to that day, no charge until then.
     const subscription = await stripe.subscriptions.create({
       customer: customer.id,
       items: [{ price: price.id }],
       default_payment_method: paymentMethodId,
-      billing_cycle_anchor: anchorTs,
-      proration_behavior: "none",
       expand: ["latest_invoice"],
+      ...(anchorTs !== null && {
+        billing_cycle_anchor: anchorTs,
+        proration_behavior: "none",
+      }),
     });
+
+    const firstPaymentTs = anchorTs ?? Math.floor(Date.now() / 1000);
 
     console.log(
       `[create-subscription] id=${subscription.id} status=${subscription.status}` +
-        ` billingDay=${billingDay} firstPayment=${new Date(anchorTs * 1000).toDateString()}`
+        ` billingDay=${billingDay ?? "today"} firstPayment=${new Date(firstPaymentTs * 1000).toDateString()}`
     );
 
-    // Renewal is one interval after the anchor
-    const renewalDate = new Date(anchorTs * 1000);
+    // Renewal is one interval after first payment
+    const renewalDate = new Date(firstPaymentTs * 1000);
     if (interval === "month") renewalDate.setMonth(renewalDate.getMonth() + 1);
     else renewalDate.setFullYear(renewalDate.getFullYear() + 1);
 
     return NextResponse.json({
       subscriptionId: subscription.id,
       status: subscription.status,
-      firstPaymentTs: anchorTs,
+      firstPaymentTs,
       renewalTs: Math.floor(renewalDate.getTime() / 1000),
-      billingDay: Number(billingDay),
+      billingDay: startToday ? null : Number(billingDay),
     });
   } catch (error: any) {
     console.error("[create-subscription]", error);
