@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { sendDonationReceipt } from "@/backend/email/sender";
 
 const stripe = process.env.STRIPE_SECRET_KEY
   ? new Stripe(process.env.STRIPE_SECRET_KEY, {
@@ -27,72 +26,10 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Retrieve the checkout session
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
-    // If payment is successful and we have customer email, send receipt
-    if (
-      session.payment_status === "paid" &&
-      session.customer_email &&
-      session.amount_total
-    ) {
-      // Check if we've already sent a receipt (using metadata flag)
-      const receiptSent = session.metadata?.receipt_sent === "true";
-
-      if (!receiptSent) {
-        // Get customer name if available
-        let customerName: string | undefined;
-        if (session.customer) {
-          try {
-            const customer = await stripe.customers.retrieve(
-              session.customer as string
-            );
-            if (!customer.deleted && "name" in customer && customer.name) {
-              customerName = customer.name;
-            }
-          } catch (err) {
-            // Customer might not exist or be accessible, continue without name
-            console.log("Could not retrieve customer name:", err);
-          }
-        }
-
-        // Format donation date
-        const donationDate = new Date().toLocaleDateString("en-GB", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-
-        // Send receipt email (non-blocking - don't fail if email fails)
-        try {
-          const emailResult = await sendDonationReceipt({
-            donorEmail: session.customer_email,
-            donorName: customerName,
-            amount: session.amount_total,
-            currency: session.currency || "gbp",
-            purpose: session.metadata?.purpose,
-            donationDate,
-            sessionId: session.id,
-          });
-
-          if (emailResult.success) {
-            // Mark receipt as sent in session metadata
-            await stripe.checkout.sessions.update(sessionId, {
-              metadata: {
-                ...session.metadata,
-                receipt_sent: "true",
-              },
-            });
-            console.log("Contribution receipt sent successfully");
-          } else {
-            console.error("Failed to send contribution receipt:", emailResult.error);
-          }
-        } catch (emailError) {
-          console.error("Error sending contribution receipt:", emailError);
-          // Continue anyway - session verification was successful
-        }
-      }
-    }
+    // Stripe automatically sends a receipt email to the customer —
+    // enable this in Stripe Dashboard → Settings → Customer emails → Successful payments
 
     return NextResponse.json({
       success: true,
@@ -113,4 +50,3 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-
