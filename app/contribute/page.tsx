@@ -3,9 +3,10 @@
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Hero } from "@/components/hero";
-import { DonationForm } from "@/components/donation-form";
+import { SubscriptionForm } from "@/components/subscription-form";
+import { PaymentIntentForm } from "@/components/payment-intent-form";
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, Shield, CheckCircle, XCircle, GraduationCap } from "lucide-react";
+import { Heart, Shield, CheckCircle, XCircle, GraduationCap, RefreshCw } from "lucide-react";
 import { PolicyModal } from "@/components/policy-modal";
 
 function CanceledMessage() {
@@ -57,7 +58,11 @@ function CanceledMessage() {
   );
 }
 
+type Tab = "subscription" | "onetime";
+
 export default function DonatePage() {
+  const [activeTab, setActiveTab] = useState<Tab>("subscription");
+
   return (
     <div className="flex min-h-screen flex-col">
       <Hero
@@ -78,7 +83,49 @@ export default function DonatePage() {
           <Suspense fallback={null}>
             <CanceledMessage />
           </Suspense>
-          <DonationForm />
+
+          {/* Tab switcher */}
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex rounded-xl border border-input bg-muted p-1 gap-1">
+              <button
+                onClick={() => setActiveTab("subscription")}
+                className={`relative flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-200 ${
+                  activeTab === "subscription"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <RefreshCw className="h-4 w-4" />
+                Subscribe
+                {activeTab !== "subscription" && (
+                  <span className="ml-1 rounded-full bg-primary/10 px-1.5 py-0.5 text-xs font-semibold text-primary">
+                    Popular
+                  </span>
+                )}
+              </button>
+              <button
+                onClick={() => setActiveTab("onetime")}
+                className={`flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-200 ${
+                  activeTab === "onetime"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Heart className="h-4 w-4" />
+                One-off Contribution
+              </button>
+            </div>
+          </div>
+
+          {/* Regular giving — shown by default */}
+          {activeTab === "subscription" && (
+            <SubscriptionForm planName="Subscribe" />
+          )}
+
+          {/* One-off payment */}
+          {activeTab === "onetime" && (
+            <PaymentIntentForm />
+          )}
 
           {/* Why Donate Section */}
           <div className="mt-16 mx-auto max-w-screen-2xl">
