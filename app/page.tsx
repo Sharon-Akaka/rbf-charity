@@ -66,11 +66,13 @@ export default function Home() {
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
             <div className="relative h-64 w-full overflow-hidden rounded-lg sm:h-80 lg:h-96 animate-fade-in-up">
               <Image
-                src="/whatWeDo.png"
+                src="/newWhatWeDo.png"
                 alt="Community support and unity"
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"
                 priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                unoptimized
               />
             </div>
             <div className="animate-fade-in-up animation-delay-200">
